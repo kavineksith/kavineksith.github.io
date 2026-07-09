@@ -1229,8 +1229,7 @@ $(function () {
     }, 600 + Math.random() * 400);
   }
 
-  // appendChatMessage: user bubbles use .text() (never interpolated HTML).
-  // Bot responses use .html() since they come from the trusted local JSON knowledge base.
+  // appendChatMessage: render all chat content as text (never interpolated HTML).
   function appendChatMessage(type, text) {
     const isUser = (type === 'user');
     const bubbleClass = isUser
@@ -1241,13 +1240,8 @@ $(function () {
     const $wrap = $('<div>').addClass('flex ' + wrapClass);
     const $bubble = $('<div>').addClass('max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line ' + bubbleClass);
 
-    if (isUser) {
-      // User-supplied content — ALWAYS text, never HTML
-      $bubble.text(text);
-    } else {
-      // Bot content from trusted local JSON knowledge base — allow safe HTML
-      $bubble.html(text);
-    }
+    // Never interpret message text as HTML to prevent XSS from tainted flows.
+    $bubble.text(text);
 
     $wrap.append($bubble);
     $chatMessages.append($wrap);
