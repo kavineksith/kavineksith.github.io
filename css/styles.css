@@ -102,26 +102,50 @@ header nav a::after {
   transition: width 0.25s ease;
 }
 
-header nav a:hover::after, header nav a.active::after {
+header nav a:hover::after,
+header nav a.active::after {
   width: 100%;
 }
 
-header nav a:hover, header nav a.active {
+header nav a:hover,
+header nav a.active {
   color: var(--gold-300);
 }
 
 @keyframes float-gold {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes float-purple {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-40px, 40px) scale(0.9); }
-  66% { transform: translate(20px, -20px) scale(1.05); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-40px, 40px) scale(0.9);
+  }
+
+  66% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 .hero-blob {
@@ -167,6 +191,33 @@ header nav a:hover, header nav a.active {
   border-color: rgba(234, 179, 8, 0.5);
 }
 
+.tech-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgb(51 65 85);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-card:hover {
+  border-color: rgb(234 179 8);
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(234, 179, 8, 0.2);
+}
+
+.tech-card i {
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover i {
+  transform: scale(1.15);
+}
+
 .feature-check {
   width: 20px;
   height: 20px;
@@ -192,11 +243,13 @@ header nav a:hover, header nav a.active {
   color: #cbd5e1;
 }
 
-.modal-content-box, .legal-modal-box {
+.modal-content-box,
+.legal-modal-box {
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.modal-content-box.show, .legal-modal-box.show {
+.modal-content-box.show,
+.legal-modal-box.show {
   transform: scale(1) translateY(0);
   opacity: 1;
 }
