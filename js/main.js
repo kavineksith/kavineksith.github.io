@@ -231,9 +231,31 @@ $(function () {
       { name: "Custom Solution Design", basic: false, standard: false, custom: true }
     ],
     socials: [
-      { platform: "LinkedIn", icon: "fa-brands fa-linkedin", url: "https://linkedin.com/in/kavin-eksith" },
-      { platform: "GitHub", icon: "fa-brands fa-github", url: "https://github.com/kavineksith" },
-      { platform: "Medium", icon: "fa-brands fa-medium", url: "https://kavineksith.medium.com" }
+      {
+        platform: "LinkedIn",
+        icon: "fa-brands fa-linkedin",
+        url: "https://linkedin.com/in/kavin-eksith"
+      },
+      {
+        platform: "GitHub",
+        icon: "fa-brands fa-github",
+        url: "https://github.com/kavineksith"
+      },
+      {
+        platform: "Portfolio",
+        icon: "fa-solid fa-globe",
+        url: "https://kavineksith.github.io"
+      },
+      {
+        platform: "Medium",
+        icon: "fa-brands fa-medium",
+        url: "https://kavineksith.medium.com"
+      },
+      {
+        platform: "Cyber Portfolio",
+        icon: "fa-solid fa-shield-halved",
+        url: "https://your-cyber-portfolio-url.com"
+      }
     ]
   };
 
@@ -253,7 +275,7 @@ $(function () {
   // ==========================================
   // DYNAMIC COMPONENT RENDERING
   // ==========================================
-  
+
   // Render Services
   const $servicesGrid = $('#services-grid');
   siteData.services.forEach(function (service) {
@@ -374,8 +396,8 @@ $(function () {
   siteData.comparisonFeatures.forEach(function (feat) {
     function getCellHtml(val, highlighted) {
       if (typeof val === 'boolean') {
-        return val 
-          ? `<div class="w-6 h-6 rounded-full ${highlighted ? 'bg-gold-500/20 text-gold-400' : 'bg-slate-800 text-slate-300'} flex items-center justify-center mx-auto"><i class="fa-solid fa-check text-xs"></i></div>` 
+        return val
+          ? `<div class="w-6 h-6 rounded-full ${highlighted ? 'bg-gold-500/20 text-gold-400' : 'bg-slate-800 text-slate-300'} flex items-center justify-center mx-auto"><i class="fa-solid fa-check text-xs"></i></div>`
           : `<div class="w-6 h-6 rounded-full bg-slate-800/50 flex items-center justify-center mx-auto text-slate-600"><i class="fa-solid fa-minus text-xs"></i></div>`;
       }
       return `<span class="text-sm ${highlighted ? 'text-gold-400' : 'text-slate-300'} font-medium">${val}</span>`;
@@ -408,7 +430,7 @@ $(function () {
   // ==========================================
   // NAVIGATION & MENU INTERACTION
   // ==========================================
-  
+
   // Mobile nav toggles
   $('#navToggle').on('click', function () {
     $('#mobileMenu').slideToggle(200);
@@ -424,7 +446,7 @@ $(function () {
   const sections = $('section[id]');
   $(window).on('scroll', function () {
     const scrollPos = $(window).scrollTop();
-    
+
     // Header shadow background threshold
     if (scrollPos > 50) {
       $('#navbar').addClass('scrolled');
@@ -603,7 +625,7 @@ $(function () {
   function showToast(type, message) {
     clearTimeout(toastTimer);
     $toastNotification.removeClass('hidden border-green-500/30 text-green-200 shadow-green-900/20 bg-green-950/90 border-red-500/30 text-red-200 shadow-red-900/20 bg-red-950/90');
-    
+
     if (type === 'success') {
       $toastNotification.addClass('bg-green-950/90 border-green-500/30 text-green-200 shadow-green-900/20');
       $toastIcon.html('<i class="fa-solid fa-circle-check text-green-400 text-xl"></i>');
@@ -611,7 +633,7 @@ $(function () {
       $toastNotification.addClass('bg-red-950/90 border-red-500/30 text-red-200 shadow-red-900/20');
       $toastIcon.html('<i class="fa-solid fa-circle-xmark text-red-400 text-xl"></i>');
     }
-    
+
     $toastMessage.text(message);
     $toastNotification.removeClass('hidden');
     setTimeout(() => {
@@ -629,6 +651,89 @@ $(function () {
   }
 
   $('#closeToast').on('click', hideToast);
+
+
+  // ==========================================
+  // CREDENTIALS CATEGORIES TAB SWITCHING
+  // ==========================================
+  $('.cred-tab-btn').on('click', function () {
+    $('.cred-tab-btn').removeClass('active bg-gradient-to-r from-gold-400 to-gold-600 text-slate-950 shadow-md').addClass('text-slate-400 hover:text-slate-200');
+    $(this).addClass('active bg-gradient-to-r from-gold-400 to-gold-600 text-slate-950 shadow-md').removeClass('text-slate-400 hover:text-slate-200');
+
+    const targetPaneId = $(this).data('target');
+    $('.cred-content-pane').addClass('hidden');
+    $('#' + targetPaneId).removeClass('hidden');
+  });
+
+
+  // ==========================================
+  // INPUT SANITIZER & XSS DEFENSE
+  // ==========================================
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, function (match) {
+      const escapeMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;'
+      };
+      return escapeMap[match];
+    });
+  }
+
+  // ==========================================
+  // CONTACT FORM INQUIRY SUBMISSION HANDLER
+  // ==========================================
+  $('#contactForm').on('submit', function (e) {
+    e.preventDefault();
+
+    // Read raw inputs and sanitize to prevent injection attacks
+    const rawName = $('#cf-name').val();
+    const rawEmail = $('#cf-email').val();
+    const rawMessage = $('#cf-message').val();
+
+    const name = escapeHTML(rawName ? rawName.trim() : '');
+    const email = escapeHTML(rawEmail ? rawEmail.trim() : '');
+    const message = escapeHTML(rawMessage ? rawMessage.trim() : '');
+
+    // Form inputs presence checks
+    if (!name || !email || !message) {
+      showToast('error', 'Please fill out all required fields.');
+      return;
+    }
+
+    // 1. Name validation regex: Allows alphabets, spaces, dots, hyphens (minimum 2 chars)
+    const nameRegex = /^[A-Za-z\s.\-]{2,50}$/;
+    if (!nameRegex.test(rawName.trim())) {
+      showToast('error', 'Please enter a valid name (alphabets, spaces, dots, and hyphens only).');
+      return;
+    }
+
+    // 2. Email validation RFC 5322 compliance regex
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    if (!emailRegex.test(rawEmail.trim())) {
+      showToast('error', 'Please enter a valid email address.');
+      return;
+    }
+
+    // 3. Message validation: Limit length to prevent buffer overloads/spam (minimum 10, max 2000 chars)
+    if (message.length < 10 || message.length > 2000) {
+      showToast('error', 'Message must be between 10 and 2000 characters long.');
+      return;
+    }
+
+    // Escape and construct headers securely
+    const subject = encodeURIComponent('Project inquiry from ' + name);
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+
+    showToast('success', 'Opening your email client to send message...');
+
+    setTimeout(function () {
+      window.location.href = 'mailto:insophinia.solutions@proton.me?subject=' + subject + '&body=' + body;
+    }, 1000);
+  });
 
 
   // ==========================================
@@ -674,7 +779,7 @@ $(function () {
   }
 
   const theme = getTheme();
-  
+
   // Set CSS class gradient style matching React's determineTheme hook
   const $dynamicBg = $('#dynamic-bg');
   const gradientClasses = {
@@ -822,7 +927,7 @@ $(function () {
 
     animationFrameId = requestAnimationFrame(draw);
   }
-  
+
   if (particleCount > 0) {
     draw();
   }
@@ -840,52 +945,184 @@ $(function () {
 
   const assistantKnowledge = {
     intents: [
+      // ── Greetings ─────────────────────────────────────────────
       {
-        patterns: ["\\b(hi|hello|hey|greetings|morning|afternoon|evening)\\b"],
-        responses: ["Hello! I am your personal AI assistant. How can I help you today?"]
+        patterns: ["\\b(hi|hello|hey|greetings|good morning|good afternoon|good evening|howdy|sup)\\b"],
+        responses: [
+          "Hello! I'm Kavin's AI assistant. I can answer questions about his skills, services, certifications, projects, or packages. What would you like to know?",
+          "Hey there! I'm here to help you learn more about Kavin and his freelance services. What's on your mind?"
+        ]
       },
+
+      // ── Who is Kavin ──────────────────────────────────────────
       {
-        patterns: ["\\b(package|packages|pricing|cost|price|how much|fee|fees)\\b"],
-        responses: ["I offer three main packages:\n\n• The Essential (Basic) for Rs. 5,000: Includes Tailwind CSS, Custom CSS, SEO, Responsive Design, and 2 Revisions.\n• The Prestige (Standard) for Rs. 10,000: Includes everything in Basic, plus Google Analytics, Security Configuration, 5 Revisions, Hosting Setup Assistance, and Deployment Guidance.\n• The Custom Package: Tailored pricing for complex requirements, enterprise features, advanced automation scripts, and unlimited revisions. Please contact me for a quote."]
+        patterns: ["\\b(who are you|who is kavin|about you|about kavin|tell me about|background|introduce)\\b"],
+        responses: ["Kavin Eksith is an early-career IT professional with hands-on experience across systems administration, networking, cloud infrastructure, cybersecurity, and software development. He is certified across Cisco, AWS, ISC², Google Cloud, and ISO governance domains — building secure, scalable, and reliable systems through real-world projects."]
       },
+
+      // ── Services ──────────────────────────────────────────────
       {
-        patterns: ["\\b(hosting|host|domain|deploy|deployment|server)\\b"],
-        responses: ["For hosting, the client is responsible for platform costs. However, my Standard Package (Rs. 10,000) includes hosting account setup assistance and deployment guidance."]
+        patterns: ["\\b(service|services|what do you do|what do you offer|what can you do|capabilities|offerings)\\b"],
+        responses: ["Kavin offers a range of professional IT services:\n\n• Bespoke landing page & web development\n• Professional email template design\n• Resume & business letterhead design\n• IT automation & scripting\n• Cybersecurity consulting & vulnerability assessment\n• REST API design, development & security hardening\n• Web application QA testing\n• Network administration & cloud infrastructure setup\n• WhatsApp Business integration\n\nWant details on a specific service?"]
       },
+
+      // ── Packages / Pricing ────────────────────────────────────
       {
-        patterns: ["\\b(revision|revisions|changes|modify|edit)\\b"],
-        responses: ["My Basic package includes 2 revision rounds, while the Standard package includes 5 revision rounds. Custom packages offer negotiated/unlimited revisions."]
+        patterns: ["\\b(package|packages|pricing|cost|price|how much|fee|fees|rate|rates|quote|tier)\\b"],
+        responses: ["Kavin offers three service packages:\n\n💎 <strong>Essential (Basic) — Rs. 5,000</strong>\nTailwind CSS, Custom CSS/SCSS, SEO optimisation, fully responsive design, 2 revision rounds.\n\n🏆 <strong>Prestige (Standard) — Rs. 10,000</strong>\nEverything in Basic plus Google Analytics integration, security configuration, hosting setup assistance, deployment guidance, 5 revision rounds.\n\n⚡ <strong>Custom Package — Contact for quote</strong>\nTailored for complex requirements, enterprise features, advanced automation, unlimited revisions.\n\nAll packages include a 50% non-refundable advance before work begins."]
       },
+
+      // ── Hosting / Deployment ──────────────────────────────────
       {
-        patterns: ["\\b(terms|conditions|policy|privacy|rules|legal)\\b"],
-        responses: ["You can view my Privacy Policy and Terms of Service by clicking the links in the footer of my website. They cover information collection, source code ownership, liability, and payment terms."]
+        patterns: ["\\b(hosting|host|domain|deploy|deployment|server|launch|publish|go live|vps)\\b"],
+        responses: ["The client is responsible for platform / hosting costs. However, the Standard Package (Rs. 10,000) includes hosting account setup assistance and deployment guidance so you're never left on your own."]
       },
+
+      // ── Revisions ─────────────────────────────────────────────
       {
-        patterns: ["\\b(contact|email|phone|whatsapp|reach|call|message)\\b"],
-        responses: ["You can reach me via my LinkedIn profile (https://linkedin.com/in/kavin-eksith) for any inquiries or project discussions."]
+        patterns: ["\\b(revision|revisions|change|changes|modify|edit|update|iteration)\\b"],
+        responses: ["Revision rounds per package:\n• Basic Package — 2 revision rounds\n• Standard Package — 5 revision rounds\n• Custom Package — Negotiated / unlimited revisions\n\nA revision round covers a defined set of feedback-based changes, not unlimited alterations per round."]
       },
+
+      // ── Payment ───────────────────────────────────────────────
       {
-        patterns: ["\\b(service|services|what do you do|offer|features)\\b"],
-        responses: ["I craft bespoke, high-converting landing pages. My services also include the design of professional email templates, resumes, and business letterheads, alongside IT automation and cyber security consulting."]
+        patterns: ["\\b(payment|pay|advance|deposit|money|invoice|billing|50%|upfront)\\b"],
+        responses: ["A <strong>non-refundable advance of 50%</strong> of the total package fee is required before development starts. The remaining 50% is due upon project completion and delivery."]
       },
+
+      // ── Timeline / Delivery ───────────────────────────────────
       {
-        patterns: ["\\b(payment|pay|advance|deposit|money)\\b"],
-        responses: ["I require a non-refundable advance payment of 50% of the total package fee before starting development. The remaining 50% is due upon project completion."]
+        patterns: ["\\b(timeline|time|delivery|deadline|how long|duration|turnaround|eta|how fast|when)\\b"],
+        responses: ["Project timelines depend on complexity and scope:\n\n• Basic landing page — typically 3–5 business days\n• Standard package with integrations — 7–14 business days\n• Custom / enterprise projects — discussed and agreed before work begins\n\nTimelines start from the advance payment date."]
       },
+
+      // ── Contact ───────────────────────────────────────────────
       {
-        patterns: ["\\b(custom|feature|complex|enterprise)\\b"],
-        responses: ["For custom features or enterprise solutions not listed in my standard packages, please contact me directly for a personalized consultation."]
+        patterns: ["\\b(contact|email|phone|whatsapp|reach|call|message|get in touch|hire|linkedin)\\b"],
+        responses: ["You can reach Kavin via:\n\n📧 insophinia.solutions@proton.me\n💼 LinkedIn: linkedin.com/in/kavin-eksith\n🐙 GitHub: github.com/kavineksith\n\nOr use the <strong>Send a Project Inquiry</strong> form at the bottom of this page for a direct message."]
       },
+
+      // ── Tech Stack / Skills ───────────────────────────────────
       {
-        patterns: ["\\b(thank you|thanks|thx)\\b"],
-        responses: ["You're very welcome! Let me know if you have any other questions."]
+        patterns: ["\\b(skill|skills|tech|technology|stack|what do you know|expertise|proficiency|language|languages|tools)\\b"],
+        responses: ["Kavin's technology stack includes:\n\n<strong>Frontend:</strong> HTML5, CSS3, SCSS/SASS, JavaScript, jQuery, Tailwind CSS, Next.js, TypeScript, React\n\n<strong>Backend:</strong> Node.js, Express.js, PHP, Go, Java, Spring Boot\n\n<strong>Databases:</strong> MySQL, SQLite3, PostgreSQL, Supabase\n\n<strong>DevOps & Tools:</strong> Git, GitHub, VS Code, PHP Composer, Linux, REST API design\n\n<strong>Security:</strong> Web vulnerability assessment, web app QA testing, API security, penetration testing fundamentals\n\n<strong>Other:</strong> WhatsApp Business integration, responsive design, IT automation"]
       },
+
+      // ── Frontend ──────────────────────────────────────────────
       {
-        patterns: ["\\b(bye|goodbye|see you)\\b"],
-        responses: ["Goodbye! Have a great day. Feel free to reach out if you need anything else."]
+        patterns: ["\\b(html|css|scss|sass|tailwind|frontend|front-end|react|next.?js|typescript|jquery|javascript)\\b"],
+        responses: ["For frontend development, Kavin works with HTML5, CSS3, SCSS/SASS, Tailwind CSS, JavaScript, jQuery, TypeScript, React, and Next.js — building fully responsive, accessible, and visually modern interfaces."]
+      },
+
+      // ── Backend ───────────────────────────────────────────────
+      {
+        patterns: ["\\b(backend|back-end|node|express|php|go|golang|java|spring|spring boot|server side)\\b"],
+        responses: ["On the backend, Kavin uses Node.js, Express.js, PHP, Go, Java, and Spring Boot to build robust RESTful services, server-side applications, and automation pipelines."]
+      },
+
+      // ── Databases ─────────────────────────────────────────────
+      {
+        patterns: ["\\b(database|db|mysql|sqlite|postgresql|postgres|supabase|sql|nosql|storage)\\b"],
+        responses: ["Kavin has experience with relational and modern cloud databases:\n• <strong>MySQL</strong> — traditional relational database\n• <strong>SQLite3</strong> — lightweight embedded database\n• <strong>PostgreSQL</strong> — advanced open-source RDBMS\n• <strong>Supabase</strong> — open-source Firebase alternative with PostgreSQL backend"]
+      },
+
+      // ── REST API ──────────────────────────────────────────────
+      {
+        patterns: ["\\b(api|rest|restful|endpoint|integration|webhook|json|http)\\b"],
+        responses: ["Kavin specialises in REST API design, development, and security hardening — covering route design, authentication strategies, rate limiting, input validation, and security best practices aligned with OWASP guidelines."]
+      },
+
+      // ── Cybersecurity ─────────────────────────────────────────
+      {
+        patterns: ["\\b(security|cyber|cybersecurity|pentest|penetration|vulnerability|assessment|owasp|xss|injection|hacking|audit|secure|compliance)\\b"],
+        responses: ["Kavin holds multiple cybersecurity credentials including ISC² CC, Cisco CyberOps Associate, ISO/IEC 27001:2022 Lead Auditor, and Google Cloud Cybersecurity Certificate. He provides:\n• Web application security assessments\n• API security analysis\n• Vulnerability identification & reporting\n• Security configuration hardening\n• Governance and compliance guidance (ISO 27001, ITSM)"]
+      },
+
+      // ── QA Testing ────────────────────────────────────────────
+      {
+        patterns: ["\\b(qa|quality|testing|test|qat|bug|bugs|assurance)\\b"],
+        responses: ["Kavin is certified as a Trainee Software Tester (Open Learning Platform – University of Moratuwa) and has practical web application QA experience — covering functional testing, regression testing, and bug reporting."]
+      },
+
+      // ── WhatsApp integration ──────────────────────────────────
+      {
+        patterns: ["\\b(whatsapp|whats app|messaging|chat bot|chatbot|wa)\\b"],
+        responses: ["Kavin has hands-on experience with WhatsApp Business API integration, enabling automated messaging flows, notifications, and customer interaction modules within web applications."]
+      },
+
+      // ── Linux / DevOps ────────────────────────────────────────
+      {
+        patterns: ["\\b(linux|devops|git|github|version control|docker|automation|script|bash|shell|composer)\\b"],
+        responses: ["Kavin is proficient with Linux environments, Git/GitHub version control, PHP Composer, and IT automation scripting — enabling streamlined development workflows and deployment pipelines."]
+      },
+
+      // ── Education ─────────────────────────────────────────────
+      {
+        patterns: ["\\b(education|degree|study|academic|university|college|qualification|btec|hnd|diploma)\\b"],
+        responses: ["Kavin's academic background:\n\n🎓 <strong>Pearson BTEC Level 5 HND in Computing</strong> (Merit)\nESOFT Metro Campus — 2021–2023\n\n📜 <strong>Diploma in Information & Communication Technology</strong>\nNenasala ICT Training Center — 2019–2020\n\n📜 <strong>Diploma in English Language</strong>\nNenasala ICT Training Center — 2019–2020"]
+      },
+
+      // ── Certifications ────────────────────────────────────────
+      {
+        patterns: ["\\b(certif|certification|certified|credential|cisco|aws|isc2|isc²|iso|google|oracle|fortigate|fortinet|aviatrix|forage|linux foundation)\\b"],
+        responses: ["Kavin holds 30+ professional credentials across:\n\n🔐 <strong>Cybersecurity & Governance:</strong> ISC² CC, Cisco CyberOps, ISO 27001 Lead Auditor, ISO 27701 Privacy Lead Auditor, Google Cloud Cybersecurity, Fortinet FCA, CJWAPT, CASA\n\n☁️ <strong>Cloud & Infrastructure:</strong> AWS Cloud Practitioner, Oracle Cloud 2025 Foundations, Aviatrix ACE Multicloud, Google IT Support, IBM IT Support\n\n🌐 <strong>Networking & Development:</strong> Cisco CCNA, DevNet Associate, Python & JS Essentials, Linux Foundation LFS101, Open Learning Platform – University of Moratuwa (Full-Stack & Software Tester)\n\n🏢 <strong>Forage Simulations:</strong> JPMorgan Chase, Walmart, Skyscanner, PwC, EY, AIG, Mastercard, Electronic Arts, and more."]
+      },
+
+      // ── Projects ──────────────────────────────────────────────
+      {
+        patterns: ["\\b(project|projects|portfolio|work|built|developed|created|github|open source|sample)\\b"],
+        responses: ["Kavin's project portfolio includes a diverse range of real-world builds:\n\n• Full-stack web applications with Next.js, Node.js & PostgreSQL\n• REST API services with Express.js and Spring Boot\n• Cybersecurity tools and automation scripts\n• Responsive landing pages and business websites\n• WhatsApp integration modules\n\nVisit his GitHub at <strong>github.com/kavineksith</strong> for public repositories. Some security-related tools are kept private — demos available on request."]
+      },
+
+      // ── Experience ────────────────────────────────────────────
+      {
+        patterns: ["\\b(experience|work experience|career|job|employment|professional|freelance|freelancer)\\b"],
+        responses: ["Kavin is an early-career IT professional with practical freelance and project experience spanning web development, network administration, cloud infrastructure, and cybersecurity consulting. He actively builds, deploys, and secures real systems through hands-on project work."]
+      },
+
+      // ── Languages spoken ──────────────────────────────────────
+      {
+        patterns: ["\\b(english|sinhala|speak|spoken language|communication|language spoken)\\b"],
+        responses: ["Kavin communicates in:\n• <strong>English</strong> — Full Working Proficiency\n• <strong>Sinhala</strong> — Native / Bilingual Proficiency"]
+      },
+
+      // ── Availability ──────────────────────────────────────────
+      {
+        patterns: ["\\b(available|availability|free|open for work|hire|book|schedule|slot)\\b"],
+        responses: ["Kavin is currently open to new freelance projects and collaborations. Use the <strong>Send a Project Inquiry</strong> form below to describe your project, or reach out via LinkedIn for a quick conversation."]
+      },
+
+      // ── Privacy / Legal ───────────────────────────────────────
+      {
+        patterns: ["\\b(terms|conditions|policy|privacy|rules|legal|gdpr|data|refund)\\b"],
+        responses: ["The Privacy Policy and Terms of Service are available in the footer of this page. They cover information collection, source code ownership, liability disclaimers, and payment terms including the non-refundable advance policy."]
+      },
+
+      // ── Custom / Enterprise ───────────────────────────────────
+      {
+        patterns: ["\\b(custom|enterprise|complex|advanced|tailored|bespoke|special|unique)\\b"],
+        responses: ["For custom or enterprise requirements not covered by the standard packages — such as multi-page applications, advanced automation pipelines, or security audit projects — Kavin offers tailored consultations. Contact him directly for a personalised quote."]
+      },
+
+      // ── Positive feedback ─────────────────────────────────────
+      {
+        patterns: ["\\b(thank|thanks|thank you|thx|appreciate|great|awesome|perfect|nice)\\b"],
+        responses: [
+          "You're very welcome! Let me know if there's anything else I can help with.",
+          "Happy to help! Feel free to ask if you have any more questions."
+        ]
+      },
+
+      // ── Goodbye ───────────────────────────────────────────────
+      {
+        patterns: ["\\b(bye|goodbye|see you|later|take care|cya|farewell)\\b"],
+        responses: [
+          "Goodbye! Have a great day. Feel free to come back anytime. 👋",
+          "See you! Don't hesitate to reach out if you have more questions."
+        ]
       }
     ],
-    fallback: "I'm sorry, I don't have the answer to that specific question. Please contact me directly via LinkedIn (https://linkedin.com/in/kavin-eksith) for more personalized assistance."
+    fallback: "I don't have a specific answer for that, but Kavin would be happy to help! You can reach him at <strong>insophinia.solutions@proton.me</strong> or via <a href='https://linkedin.com/in/kavin-eksith' target='_blank' class='text-gold-400 underline'>LinkedIn</a> for personalised assistance."
   };
 
   const $chatPanel = $('#chatPanel');
@@ -940,13 +1177,34 @@ $(function () {
     return assistantKnowledge.fallback;
   }
 
-  // Handle messages output
+  // =========================================
+  // CHAT: RATE-LIMIT STATE
+  // =========================================
+  let lastChatTime = 0;
+  const CHAT_RATE_LIMIT_MS = 1500; // minimum ms between messages
+
+  // Handle messages output (XSS-safe)
   function sendMessage(text) {
     const sanitized = text.trim();
     if (!sanitized) return;
 
+    // Rate-limit guard
+    const now = Date.now();
+    if (now - lastChatTime < CHAT_RATE_LIMIT_MS) {
+      return; // silently drop if too fast
+    }
+    lastChatTime = now;
+
+    // Length guard
     if (sanitized.length > 500) {
-      appendChatMessage('bot', "Your message is too long. Please try to be more concise.");
+      appendChatMessage('bot', 'Your message is too long. Please keep it under 500 characters.');
+      return;
+    }
+
+    // Reject messages that look like script injections
+    const dangerousPattern = /<\s*script|javascript:/i;
+    if (dangerousPattern.test(sanitized)) {
+      appendChatMessage('bot', 'Sorry, that input is not allowed.');
       return;
     }
 
@@ -954,39 +1212,45 @@ $(function () {
     $chatInput.val('');
     $chatSuggestions.addClass('hidden');
 
-    // Simulate typing spinner delay
+    // Simulate typing spinner delay using DOM API (no innerHTML)
     const typingId = 'typing-' + Date.now();
-    $chatMessages.append(`
-      <div id="${typingId}" class="flex justify-start">
-        <div class="bg-slate-800 text-slate-400 p-3 rounded-2xl rounded-tl-sm border border-slate-700 flex items-center gap-2">
-          <i class="fa-solid fa-spinner animate-spin"></i>
-          <span class="text-xs">Typing...</span>
-        </div>
-      </div>
-    `);
+    const $typingWrap = $('<div>').attr('id', typingId).addClass('flex justify-start');
+    const $typingBubble = $('<div>').addClass('bg-slate-800 text-slate-400 p-3 rounded-2xl rounded-tl-sm border border-slate-700 flex items-center gap-2');
+    $typingBubble.append($('<i>').addClass('fa-solid fa-spinner animate-spin'));
+    $typingBubble.append($('<span>').addClass('text-xs').text('Typing...'));
+    $typingWrap.append($typingBubble);
+    $chatMessages.append($typingWrap);
     scrollMessagesBottom();
 
     setTimeout(function () {
-      $(`#${typingId}`).remove();
+      $('#' + typingId).remove();
       const botResponse = getBotResponse(sanitized);
       appendChatMessage('bot', botResponse);
     }, 600 + Math.random() * 400);
   }
 
+  // appendChatMessage: user bubbles use .text() (never interpolated HTML).
+  // Bot responses use .html() since they come from the trusted local JSON knowledge base.
   function appendChatMessage(type, text) {
     const isUser = (type === 'user');
-    const bubbleClass = isUser 
-      ? 'bg-gold-500 text-slate-950 rounded-tr-sm' 
+    const bubbleClass = isUser
+      ? 'bg-gold-500 text-slate-950 rounded-tr-sm'
       : 'bg-slate-800 text-slate-200 rounded-tl-sm border border-slate-700';
     const wrapClass = isUser ? 'justify-end' : 'justify-start';
 
-    $chatMessages.append(`
-      <div class="flex ${wrapClass}">
-        <div class="max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line ${bubbleClass}">
-          ${text}
-        </div>
-      </div>
-    `);
+    const $wrap = $('<div>').addClass('flex ' + wrapClass);
+    const $bubble = $('<div>').addClass('max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line ' + bubbleClass);
+
+    if (isUser) {
+      // User-supplied content — ALWAYS text, never HTML
+      $bubble.text(text);
+    } else {
+      // Bot content from trusted local JSON knowledge base — allow safe HTML
+      $bubble.html(text);
+    }
+
+    $wrap.append($bubble);
+    $chatMessages.append($wrap);
     scrollMessagesBottom();
   }
 
@@ -1003,4 +1267,84 @@ $(function () {
   $(document).on('click', '.suggestion-chip', function () {
     sendMessage($(this).text().trim());
   });
+
+
+  // ==========================================
+  // CONTACT FORM: LIVE FIELD VALIDATION
+  // ==========================================
+  const nameRegexLive = /^[A-Za-z\s.\-]{2,50}$/;
+  const emailRegexLive = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+  function showFieldError(fieldId, message) {
+    const $field = $('#' + fieldId);
+    const $error = $('#' + fieldId + '-error');
+    $field.removeClass('border-slate-800/50 border-green-600/50').addClass('border-red-500/60');
+    $error.text(message).removeClass('hidden');
+  }
+
+  function clearFieldError(fieldId) {
+    const $field = $('#' + fieldId);
+    const $error = $('#' + fieldId + '-error');
+    $field.removeClass('border-red-500/60').addClass('border-green-600/50');
+    $error.text('').addClass('hidden');
+  }
+
+  // Name: validate on blur
+  $('#cf-name').on('blur', function () {
+    const val = $(this).val().trim();
+    if (!val) {
+      showFieldError('cf-name', 'Name is required.');
+    } else if (!nameRegexLive.test(val)) {
+      showFieldError('cf-name', 'Use letters, spaces, dots or hyphens only (2–50 characters).');
+    } else {
+      clearFieldError('cf-name');
+    }
+  }).on('input', function () {
+    // Clear error as soon as they start typing again
+    if ($('#cf-name-error').text()) {
+      const val = $(this).val().trim();
+      if (nameRegexLive.test(val)) clearFieldError('cf-name');
+    }
+  });
+
+  // Email: validate on blur
+  $('#cf-email').on('blur', function () {
+    const val = $(this).val().trim();
+    if (!val) {
+      showFieldError('cf-email', 'Email address is required.');
+    } else if (!emailRegexLive.test(val)) {
+      showFieldError('cf-email', 'Please enter a valid email address (e.g. you@example.com).');
+    } else {
+      clearFieldError('cf-email');
+    }
+  }).on('input', function () {
+    if ($('#cf-email-error').text()) {
+      const val = $(this).val().trim();
+      if (emailRegexLive.test(val)) clearFieldError('cf-email');
+    }
+  });
+
+  // Message: live character counter + validate on blur
+  $('#cf-message').on('input', function () {
+    const len = $(this).val().length;
+    $('#cf-msg-counter').text(len + ' / 2000');
+    if (len >= 1800) {
+      $('#cf-msg-counter').addClass('text-red-400').removeClass('text-slate-600 text-green-400');
+    } else if (len >= 10) {
+      $('#cf-msg-counter').addClass('text-green-400').removeClass('text-slate-600 text-red-400');
+      clearFieldError('cf-message');
+    } else {
+      $('#cf-msg-counter').removeClass('text-red-400 text-green-400').addClass('text-slate-600');
+    }
+  }).on('blur', function () {
+    const len = $(this).val().trim().length;
+    if (!len) {
+      showFieldError('cf-message', 'Project details are required.');
+    } else if (len < 10) {
+      showFieldError('cf-message', 'Please provide at least 10 characters.');
+    } else {
+      clearFieldError('cf-message');
+    }
+  });
+
 });

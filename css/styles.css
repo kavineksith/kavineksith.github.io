@@ -21,8 +21,10 @@ html {
 body {
   background-color: var(--slate-950);
   color: #f8fafc;
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 ::-webkit-scrollbar {
@@ -48,6 +50,18 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: #1e293b #020617;
+}
+
+/* Remove underline from all nav/button anchors */
+a.no-underline,
+nav a {
+  text-decoration: none !important;
+}
+
+/* Logo typeface — Raleway */
+.font-logo {
+  font-family: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.03em;
 }
 
 .text-gradient {
