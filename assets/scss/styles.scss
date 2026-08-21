@@ -1,0 +1,328 @@
+/* =====================================================================
+   KAVIN EKSITH — PORTFOLIO SCSS
+   Light theme: bridges design system variables, soft-glass panels,
+   dynamic animations, and layout controls.
+   ===================================================================== */
+
+:root {
+  --brand-50: #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #93c5fd;
+  --brand-400: #60a5fa;
+  --brand-500: #3b82f6;
+  --brand-600: #2563eb;
+  --brand-700: #1d4ed8;
+  --brand-800: #1e3a8a;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-900: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--slate-50);
+  color: var(--slate-900);
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid pattern used behind the hero section */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 60%,
+    transparent 100%
+  );
+}
+
+/* Custom Scrollbar for Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-50);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate-200);
+  border: 2px solid var(--slate-50);
+  border-radius: 8px;
+
+  &:hover {
+    background: rgba(37, 99, 235, 0.4);
+  }
+}
+
+/* Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+/* Text Gradient Utility */
+.text-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--brand-500),
+    var(--brand-600),
+    var(--brand-800)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Liquid Glass Panel — shared across cards, tabs, modals, mobile menu */
+.glass-panel {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 20px 40px -24px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition:
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+
+  /* Glossy top-sheen highlight */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0) 45%
+    );
+    pointer-events: none;
+  }
+
+  /* Keep panel content above the sheen overlay */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Navbar indicators and behaviors */
+header.scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.06);
+}
+
+header nav a {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: var(--brand-500);
+    transition: width 0.25s ease;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  &:hover,
+  &.active {
+    color: var(--brand-600);
+  }
+}
+
+/* Floating Blob Keyframes */
+@keyframes float-brand {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes float-purple {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-40px, 40px) scale(0.9);
+  }
+
+  66% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.hero-blob {
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
+  &--brand {
+    animation-name: float-brand;
+  }
+
+  &--purple {
+    animation-name: float-purple;
+    animation-delay: 2s;
+  }
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Project Cards */
+.project-card-link {
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.015);
+  }
+}
+
+.tech-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.25)
+  );
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 1.25rem;
+  cursor: pointer;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+  box-shadow:
+    0 8px 24px -8px rgba(15, 23, 42, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  /* Glossy top-sheen highlight, the signature "liquid glass" reflection */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 55%
+    );
+    pointer-events: none;
+  }
+
+  img,
+  i {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.35s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(59, 130, 246, 0.45);
+    background: linear-gradient(
+      135deg,
+      rgba(239, 246, 255, 0.85),
+      rgba(255, 255, 255, 0.4)
+    );
+    box-shadow:
+      0 16px 40px -12px rgba(37, 99, 235, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    img,
+    i {
+      transform: scale(1.15);
+    }
+  }
+}
+
+/* Modal Transition Overlay styles */
+.modal-content-box {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.show {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Accessibility settings for prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

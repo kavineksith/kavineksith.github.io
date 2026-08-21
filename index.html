@@ -1,0 +1,1674 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Security Headers (HTTP-equivalent via meta tags) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'none'; object-src 'none'; frame-ancestors 'none';"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=(), payment=()"
+    />
+    <title>
+      Kavin Eksith — Full-Stack Developer, Cybersecurity &amp; Automation Expert
+    </title>
+
+    <!-- SEO & Search Engine Optimization Tags -->
+    <meta
+      name="description"
+      content="Professional portfolio of Kavin Eksith. Specializing in HTML5, CSS3, SCSS, Next.js, TypeScript, Go, Java, Spring Boot, REST APIs, penetration testing, security vulnerability assessments, and cloud infrastructure (AWS/Azure/GCP)."
+    />
+    <meta
+      name="keywords"
+      content="Kavin Eksith, web developer, Next.js developer, cybersecurity consultant, vulnerability assessment, Python developer, Spring Boot developer, Go programmer, full-stack engineer Sri Lanka, Web Application QA Testing, CCNA Network Engineer, Supabase integration, REST API security"
+    />
+    <meta name="author" content="Kavin Eksith" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://kavineksith.github.io/index.html" />
+    <meta name="theme-color" content="#eff6ff" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Kavin Eksith — Full-Stack Developer, Cybersecurity &amp; Automation Expert"
+    />
+    <meta
+      property="og:description"
+      content="Early-career IT professional specializing in full-stack web development, network administration, cloud infrastructure, and cybersecurity vulnerability assessments."
+    />
+    <meta
+      property="og:url"
+      content="https://kavineksith.github.io/index.html"
+    />
+    <meta property="og:site_name" content="Kavin Eksith Portfolio" />
+    <meta
+      property="og:image"
+      content="https://kavineksith.github.io/images/og-image-freelance.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image"
+      content="https://kavineksith.github.io/images/og-image-freelance-square.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Kavin Eksith — Full-Stack Developer, Cybersecurity &amp; Automation Expert"
+    />
+    <meta
+      name="twitter:description"
+      content="Early-career IT professional specializing in full-stack web development, network administration, cloud infrastructure, and cybersecurity vulnerability assessments."
+    />
+    <meta
+      name="twitter:image"
+      content="https://kavineksith.github.io/images/og-image-freelance.png"
+    />
+
+    <!-- Favicons (generated 512x512 icon, see seo-and-repo-notes.md Prompt 3) -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="images/favicon-512x512.png"
+    />
+
+    <!-- Square social image (see seo-and-repo-notes.md Prompt 2), used as a fallback for
+       platforms that crop link previews to square, and for manual social posts -->
+    <meta
+      name="twitter:image:alt"
+      content="Kavin Eksith — Full-Stack Developer, Cybersecurity & Automation Expert"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#EFF6FF",
+                100: "#DBEAFE",
+                200: "#BFDBFE",
+                300: "#93C5FD",
+                400: "#60A5FA",
+                500: "#3B82F6",
+                600: "#2563EB",
+                700: "#1D4ED8",
+                800: "#1E3A8A",
+              },
+            },
+            fontFamily: {
+              sans: ["Sora", "ui-sans-serif", "system-ui", "sans-serif"],
+              serif: ["DM Serif Display", "ui-serif", "Georgia", "serif"],
+              logo: ["Raleway", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Raleway:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Devicons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Custom Compiled Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kavin Eksith",
+        "image": "https://kavineksith.github.io/images/og-image-freelance.png",
+        "description": "Early-career IT professional specializing in full-stack web development, network administration, cloud infrastructure, and cybersecurity vulnerability assessments.",
+        "url": "https://kavineksith.github.io/index.html",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "knowsAbout": [
+          "Web Development",
+          "Cyber Security",
+          "Vulnerability Assessment",
+          "QA Testing"
+        ]
+      }
+    </script>
+  </head>
+
+  <body
+    class="font-sans antialiased bg-slate-50 text-slate-900 selection:bg-brand-500/30 selection:text-brand-200 min-h-screen relative overflow-x-hidden"
+  >
+    <!-- DYNAMIC BACKGROUND -->
+    <div
+      id="dynamic-bg"
+      class="fixed inset-0 z-0 pointer-events-none transition-colors duration-1000"
+    >
+      <canvas
+        id="bg-canvas"
+        class="absolute inset-0 w-full h-full opacity-70"
+      ></canvas>
+    </div>
+
+    <div class="relative z-10">
+      <!-- NAVBAR -->
+      <header
+        id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 bg-transparent"
+      >
+        <div
+          class="container mx-auto px-6 md:px-12 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-400 to-brand-600 flex items-center justify-center"
+            >
+              <span class="font-serif font-bold text-white text-xl">KE</span>
+            </div>
+            <span class="font-logo text-xl font-semibold tracking-wide">
+              Kavin Eksith<span class="text-brand-500">.</span>
+            </span>
+          </div>
+
+          <nav class="hidden md:flex items-center gap-8">
+            <ul class="flex items-center gap-8">
+              <li>
+                <a
+                  href="#projects"
+                  class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors uppercase tracking-widest nav-link"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors uppercase tracking-widest nav-link"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#credentials"
+                  class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors uppercase tracking-widest nav-link"
+                  >Credentials</a
+                >
+              </li>
+            </ul>
+            <a
+              href="https://linkedin.com/in/kavin-eksith"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-2.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all font-medium text-sm tracking-wide no-underline flex items-center gap-2"
+            >
+              <i class="fa-solid fa-phone text-xs"></i> Get in Touch
+            </a>
+          </nav>
+
+          <button
+            id="navToggle"
+            class="md:hidden text-slate-900 hover:text-brand-600 transition-colors"
+          >
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div
+          id="mobileMenu"
+          class="hidden md:hidden glass-panel border-t border-slate-200 mt-3"
+        >
+          <div class="flex flex-col px-6 py-6 gap-4">
+            <a
+              href="#projects"
+              class="text-lg font-medium text-slate-600 hover:text-brand-600 transition-colors mobile-link"
+              >Projects</a
+            >
+            <a
+              href="#about"
+              class="text-lg font-medium text-slate-600 hover:text-brand-600 transition-colors mobile-link"
+              >About</a
+            >
+            <a
+              href="#credentials"
+              class="text-lg font-medium text-slate-600 hover:text-brand-600 transition-colors mobile-link"
+              >Credentials</a
+            >
+            <div class="h-px w-full bg-slate-100 my-2"></div>
+            <div class="flex flex-col gap-3">
+              <a
+                href="https://linkedin.com/in/kavin-eksith"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 text-slate-600 hover:text-brand-600"
+              >
+                <i class="fa-solid fa-briefcase text-lg"></i> LinkedIn
+              </a>
+              <a
+                href="https://github.com/kavineksith"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 text-slate-600 hover:text-brand-600"
+              >
+                <i class="fa-brands fa-github text-lg"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN SECTION CONTAINER -->
+      <main>
+        <!-- HERO -->
+        <section
+          id="hero"
+          class="relative min-h-screen flex flex-col items-center justify-between pt-24 pb-8 overflow-hidden"
+        >
+          <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+            <div
+              class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-300/30 rounded-full blur-3xl hero-blob hero-blob--brand"
+            ></div>
+            <div
+              class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl hero-blob hero-blob--purple"
+            ></div>
+          </div>
+
+          <div
+            class="flex-1 flex items-center justify-center w-full mt-10 md:mt-0 px-6 md:px-12"
+          >
+            <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
+              <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 border border-brand-500/30 text-brand-600 text-sm font-medium tracking-wide"
+              >
+                <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i>
+                <span
+                  >Full-Stack Developer, Cybersecurity &amp; Automation
+                  Expert</span
+                >
+              </div>
+
+              <h1
+                class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight mb-6"
+              >
+                Hi, I'm <br class="hidden md:block" />
+                <span class="text-gradient">Kavin Eksith</span>
+              </h1>
+
+              <p
+                class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
+              >
+                Early-career IT professional with practical experience across
+                systems administration, networking, cloud infrastructure,
+                cybersecurity, and software development. Building secure,
+                scalable, reliable systems.
+              </p>
+
+              <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4"
+              >
+                <a
+                  href="#projects"
+                  class="px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-brand-500 via-brand-600 to-brand-700 text-white font-semibold tracking-wide flex items-center gap-2 shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:shadow-[0_0_40px_rgba(37,99,235,0.5)] transition-shadow w-full sm:w-auto justify-center btn-brand"
+                >
+                  View My Work <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a
+                  href="#contact-form-section"
+                  class="px-6 py-3 sm:px-8 sm:py-4 rounded-full glass-panel text-slate-900 font-medium tracking-wide hover:bg-slate-100 transition-colors w-full sm:w-auto justify-center flex btn-ghost"
+                >
+                  Connect with Me
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scroll Indicator -->
+          <div
+            class="relative z-10 flex flex-col items-center gap-3 mt-12 reveal"
+          >
+            <span class="text-xs uppercase tracking-widest text-slate-400 mb-2"
+              >Scroll to explore</span
+            >
+            <div
+              class="w-px h-12 bg-gradient-to-b from-brand-500 to-transparent"
+            ></div>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section
+          id="about"
+          class="py-24 relative z-10 bg-white overflow-hidden"
+        >
+          <div class="absolute inset-0 z-0 pointer-events-none">
+            <div
+              class="absolute top-0 right-[5%] w-80 h-80 bg-brand-200/40 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute bottom-0 left-[5%] w-96 h-96 bg-sky-200/40 rounded-full blur-3xl"
+            ></div>
+          </div>
+          <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16 reveal">
+              <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">
+                About <span class="text-gradient">Me</span>
+              </h2>
+              <p class="text-slate-500 max-w-2xl mx-auto">
+                I'm an early-career IT professional grounded in hands-on systems
+                administration, networking, and cloud infrastructure — with a
+                growing specialisation in cybersecurity and secure software
+                development.
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto"
+            >
+              <!-- Profile Card -->
+              <div
+                class="lg:col-span-4 glass-panel rounded-3xl p-8 flex flex-col items-center text-center border-t border-brand-500/20 reveal"
+              >
+                <div
+                  class="w-32 h-32 rounded-full overflow-hidden border-4 border-slate-200 mb-6 bg-slate-100 flex items-center justify-center"
+                >
+                  <span class="text-4xl font-serif font-bold text-slate-500"
+                    >K</span
+                  >
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-slate-900 mb-2">
+                  Kavin Eksith
+                </h3>
+                <p class="text-brand-600 font-medium mb-4">IT Professional</p>
+                <p
+                  class="text-slate-500 text-sm mb-6 pb-6 border-b border-slate-200"
+                >
+                  Early-career IT professional with practical experience across
+                  systems administration, networking, cloud infrastructure,
+                  cybersecurity, and software development.
+                </p>
+                <div class="grid grid-cols-2 gap-4 w-full mt-4">
+                  <div
+                    class="p-3 bg-blue-50/60 border border-slate-200 rounded-xl"
+                  >
+                    <span class="block text-2xl font-bold text-brand-600"
+                      >20+</span
+                    >
+                    <span class="text-slate-500 text-xs"
+                      >Professional Certifications</span
+                    >
+                  </div>
+                  <div
+                    class="p-3 bg-blue-50/60 border border-slate-200 rounded-xl"
+                  >
+                    <span class="block text-2xl font-bold text-brand-600"
+                      >15+</span
+                    >
+                    <span class="text-slate-500 text-xs"
+                      >Forage Simulations</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Details & Credentials -->
+              <div class="lg:col-span-8 flex flex-col gap-6 reveal">
+                <!-- Technical Capabilities Accordion/Tabs -->
+                <div class="glass-panel p-6 md:p-8 rounded-3xl">
+                  <div class="flex items-center gap-3 mb-6">
+                    <div
+                      class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center text-brand-600"
+                    >
+                      <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-slate-900">
+                      Technical Skills &amp; Capabilities
+                    </h4>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Systems &amp; Infrastructure
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                        Windows/Linux Administration, Windows Server, ADDS &amp;
+                        GPO Management, VMware, Hyper-V, VirtualBox, System
+                        Monitoring &amp; Troubleshooting.
+                      </p>
+
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Networking &amp; Cloud
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                        CCNA-Level Networking, TCP/IP, DNS, DHCP, VPN, VLAN,
+                        NAT, AWS Infrastructure, Azure, Google Cloud (GCP),
+                        Oracle Cloud (OCI).
+                      </p>
+
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Cybersecurity
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                        Web Application Security, API Security &amp; Testing,
+                        Penetration Testing Tools Dev, Vulnerability
+                        Assessments, Network Security, QA Vulnerability
+                        Assessment.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Programming &amp; Web Dev
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                        Python, Bash, PowerShell, Next.js, HTML5, CSS3, SCSS,
+                        Sass, JavaScript, Typescript, jQuery, Node.js,
+                        Express.js, Go, Java, Spring Boot, PHP, REST API Design
+                        &amp; Security.
+                      </p>
+
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Databases &amp; Devops
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                        MySQL, SQLite3, PostgreSQL, Supabase, Microsoft SQL
+                        Server, Git, GitHub Actions, Docker, CI/CD Pipeline
+                        Fundamentals.
+                      </p>
+
+                      <h5
+                        class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider"
+                      >
+                        Tools &amp; Frameworks
+                      </h5>
+                      <p class="text-slate-600 text-xs leading-relaxed">
+                        VS Code, Postman, Swagger UI, Figma, Jira, Asana, Google
+                        Analytics, PHP Composer, Linux, Web Application QA
+                        Testing.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Career Log Experience -->
+                <div class="glass-panel p-6 md:p-8 rounded-3xl">
+                  <div class="flex items-center gap-3 mb-6">
+                    <div
+                      class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"
+                    >
+                      <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-slate-900">
+                      Professional Experience
+                    </h4>
+                  </div>
+
+                  <div class="space-y-6">
+                    <div class="border-l-2 border-brand-500/30 pl-4">
+                      <div
+                        class="flex justify-between items-baseline flex-wrap gap-2"
+                      >
+                        <h5 class="text-slate-900 font-semibold text-sm">
+                          Web Developer
+                        </h5>
+                        <span class="text-xs text-brand-600"
+                          >May 2025 — Apr 2026</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400 mb-2">
+                        Self-Employed — Remote
+                      </p>
+                      <p class="text-slate-500 text-xs leading-relaxed">
+                        Developed full-stack web applications and landing pages
+                        using Next.js, TypeScript, SCSS, and Supabase. Focused
+                        on REST API design, security, and PWA point-of-sale
+                        implementations (INSOPHINIA).
+                      </p>
+                    </div>
+
+                    <div class="border-l-2 border-slate-200 pl-4">
+                      <div
+                        class="flex justify-between items-baseline flex-wrap gap-2"
+                      >
+                        <h5 class="text-slate-900 font-semibold text-sm">
+                          IT Instructor
+                        </h5>
+                        <span class="text-xs text-slate-400"
+                          >Jan 2025 — Jan 2026</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400 mb-2">
+                        Orion College, Naiwala
+                      </p>
+                      <p class="text-slate-500 text-xs leading-relaxed">
+                        Trained students in software development and QA
+                        engineering, Cisco Packet Tracer simulations, and
+                        software quality assurance methodologies.
+                      </p>
+                    </div>
+
+                    <div class="border-l-2 border-slate-200 pl-4">
+                      <div
+                        class="flex justify-between items-baseline flex-wrap gap-2"
+                      >
+                        <h5 class="text-slate-900 font-semibold text-sm">
+                          IT Coordinator
+                        </h5>
+                        <span class="text-xs text-slate-400"
+                          >Nov 2024 — Dec 2024</span
+                        >
+                      </div>
+                      <p class="text-xs text-slate-400 mb-2">
+                        Arpico Super Center, Minuwangoda Branch
+                      </p>
+                      <p class="text-slate-500 text-xs leading-relaxed">
+                        Managed local IT hardware, POS servers, network setups,
+                        and coordinated troubleshooting.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- TECHNOLOGIES -->
+        <section
+          id="technologies"
+          class="py-24 relative z-10 bg-blue-50/60 overflow-hidden"
+        >
+          <div class="absolute inset-0 z-0 pointer-events-none">
+            <div
+              class="absolute top-10 left-[10%] w-72 h-72 bg-brand-300/40 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute bottom-10 right-[10%] w-96 h-96 bg-purple-200/40 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-200/30 rounded-full blur-3xl"
+            ></div>
+          </div>
+          <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-12 reveal">
+              <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">
+                Technologies <span class="text-gradient">I Use</span>
+              </h2>
+
+              <p class="text-slate-500 max-w-2xl mx-auto">
+                A visual grid of the tools, platforms, and languages I work with
+                every day.
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-3 max-w-6xl mx-auto reveal"
+            >
+              <!-- Programming Languages -->
+
+              <div title="Python" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=py"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Java" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=java"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="JavaScript" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=js"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="TypeScript" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=ts"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Bash" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=bash"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="PowerShell" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=powershell"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Go" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=go"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Rust" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=rust"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="C#" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=cs"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- Frontend Technologies -->
+
+              <div title="HTML5" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=html"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="CSS3" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=css"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Sass" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=sass"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Tailwind CSS" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=tailwind"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- Frameworks & Runtime -->
+
+              <div title="React" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=react"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Next.js" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=nextjs"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Node.js" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=nodejs"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Spring Boot" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=spring"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Express.js" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=express"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="FastAPI" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=fastapi"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- Databases -->
+
+              <div title="PostgreSQL" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=postgres"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="MySQL" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=mysql"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="MongoDB" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=mongodb"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="SQLite" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=sqlite"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Supabase" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=supabase"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- API & Development Tools -->
+
+              <div title="Postman" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=postman"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="VS Code" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=vscode"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="PyCharm" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=pycharm"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="IntelliJ IDEA" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=idea"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="WebStorm" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=webstorm"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- Systems, Containers & Environments -->
+
+              <div title="Linux" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=linux"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Docker" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=docker"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="Anaconda ENV" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=anaconda"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <!-- DevOps & Version Control -->
+
+              <div title="Git" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=git"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="GitHub" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=github"
+                  class="w-12 h-12"
+                />
+              </div>
+
+              <div title="GitHub Actions" class="tech-card">
+                <img
+                  src="https://skillicons.dev/icons?i=githubactions"
+                  class="w-12 h-12"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="py-24 relative z-10 bg-blue-50/60">
+          <div class="container mx-auto px-6 md:px-12">
+            <div
+              class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6"
+            >
+              <div class="max-w-2xl reveal">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">
+                  My <span class="text-gradient">Projects</span>
+                </h2>
+                <p class="text-slate-500">
+                  A selection of real-world solutions, professional concepts,
+                  and personal engineering tools.
+                </p>
+              </div>
+              <button
+                id="viewAllProjectsBtn"
+                class="text-brand-600 hover:text-brand-700 font-medium flex items-center gap-2 group reveal"
+              >
+                View All Projects
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square group-hover:translate-x-1 transition-transform text-sm"
+                ></i>
+              </button>
+            </div>
+            <!-- Main page first 6 projects loaded by JS -->
+            <div
+              id="projects-grid"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            ></div>
+          </div>
+
+          <!-- View All Projects Modal -->
+          <div
+            id="projectsModal"
+            class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 hidden"
+          >
+            <div
+              id="modalOverlay"
+              class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            ></div>
+            <div
+              class="relative w-full max-w-6xl max-h-[90vh] glass-panel rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 scale-95 opacity-0 modal-content-box"
+            >
+              <div
+                class="flex justify-between items-center p-6 md:p-8 border-b border-white/60 bg-white/70 backdrop-blur-md z-10"
+              >
+                <div class="pr-4">
+                  <h3
+                    class="text-2xl md:text-3xl font-serif font-bold text-slate-900"
+                  >
+                    All <span class="text-gradient">Projects</span>
+                  </h3>
+                  <p class="text-slate-500 text-xs sm:text-sm mt-1">
+                    Explore my complete portfolio of projects.
+                  </p>
+                </div>
+                <button
+                  id="closeProjectsModal"
+                  class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-brand-600 hover:bg-slate-200 transition-colors"
+                >
+                  <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+              </div>
+              <div class="p-6 md:p-8 overflow-y-auto max-h-[70vh]">
+                <div
+                  id="modal-projects-grid"
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CREDENTIALS, CERTIFICATIONS & VIRTUAL SIMULATIONS -->
+        <section
+          id="credentials"
+          class="py-24 relative z-10 bg-white overflow-hidden"
+        >
+          <div class="absolute inset-0 z-0 pointer-events-none">
+            <div
+              class="absolute top-10 left-[8%] w-80 h-80 bg-violet-200/40 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute bottom-10 right-[8%] w-96 h-96 bg-brand-200/40 rounded-full blur-3xl"
+            ></div>
+          </div>
+          <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16 reveal">
+              <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">
+                Credentials &amp;
+                <span class="text-gradient">Certifications</span>
+              </h2>
+              <p class="text-slate-500 max-w-2xl mx-auto">
+                Extensive professional validations across cybersecurity, cloud
+                architectures, network infrastructure, governance compliance,
+                and software engineering.
+              </p>
+            </div>
+
+            <!-- Certification tabs -->
+            <div class="max-w-5xl mx-auto reveal mb-12">
+              <div
+                class="flex flex-wrap justify-center gap-2 mb-8 bg-slate-50 p-2 rounded-2xl border border-slate-200"
+              >
+                <button
+                  class="cred-tab-btn active bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md px-4 py-2 text-xs md:text-sm font-semibold rounded-xl transition-all"
+                  data-target="security-gov"
+                >
+                  Cybersecurity &amp; Governance
+                </button>
+                <button
+                  class="cred-tab-btn text-slate-500 hover:text-slate-900 px-4 py-2 text-xs md:text-sm font-semibold rounded-xl transition-all"
+                  data-target="cloud-infra"
+                >
+                  Cloud &amp; Infrastructure
+                </button>
+                <button
+                  class="cred-tab-btn text-slate-500 hover:text-slate-900 px-4 py-2 text-xs md:text-sm font-semibold rounded-xl transition-all"
+                  data-target="net-devops"
+                >
+                  Networking, Operating Systems &amp; Development
+                </button>
+                <button
+                  class="cred-tab-btn text-slate-500 hover:text-slate-900 px-4 py-2 text-xs md:text-sm font-semibold rounded-xl transition-all"
+                  data-target="forage-sim"
+                >
+                  Forage Simulations
+                </button>
+              </div>
+
+              <!-- Tab Contents -->
+              <div
+                id="cred-tab-contents"
+                class="glass-panel p-6 md:p-8 rounded-3xl min-h-[300px]"
+              >
+                <!-- Tab 1: Cybersecurity & Governance -->
+                <div id="security-gov" class="cred-content-pane space-y-4">
+                  <h4
+                    class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2"
+                  >
+                    Cybersecurity &amp; Governance Certification Track
+                  </h4>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm"
+                  >
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco CyberOps Associate</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>ISC² Certified in Cybersecurity (CC)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >ISO/IEC 27001:2022 Info. Security Lead Auditor™</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>ISO/IEC 27701:2025 Privacy Lead Auditor™</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>ISO/IEC 27001:2022 Security Associate™</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>ISO/IEC 20000 ITSM Associate™</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Google Cloud Cybersecurity Certificate</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Fortinet Certified Associate (FCA)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Certified Jr. Web App Penetration Tester (CJWAPT)</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Certified API Security Analyst (CASA)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>API Security Certified Associate (Wallarm)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Certified Cybersecurity Educator Professional
+                        (CCEP)</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab 2: Cloud & Infrastructure -->
+                <div
+                  id="cloud-infra"
+                  class="cred-content-pane hidden space-y-4"
+                >
+                  <h4
+                    class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2"
+                  >
+                    Cloud, Infrastructure &amp; Support
+                  </h4>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm"
+                  >
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>AWS Cloud Practitioner Essentials</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Oracle Cloud Infrastructure 2025 Certified Foundations
+                        Associate</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Oracle Data Platform 2025 Certified Foundations
+                        Associate</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Aviatrix ACE Multicloud Network Associate (2025)</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Google IT Support Professional Certificate</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>IBM IT Support Professional Certificate</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Google IT Automation with Python Specialization</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Cisco Hardware, Upgrade &amp; Security Support
+                        Credentials</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab 3: Networking, Operating Systems & Development -->
+                <div id="net-devops" class="cred-content-pane hidden space-y-4">
+                  <h4
+                    class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2"
+                  >
+                    Networking, Operating Systems &amp; Software Delivery
+                  </h4>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm"
+                  >
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco CCNA (Routing &amp; Switching)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco DevNet Associate</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco Python Essentials 1 &amp; 2</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco JavaScript Essentials 1 &amp; 2</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Cisco NDG Linux Essentials</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >LFS101: Introduction to Linux (The Linux
+                        Foundation)</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Open Learning Platform - University of Moratuwa Trainee
+                        Full-Stack Developer</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Open Learning Platform - University of Moratuwa Trainee
+                        Software Tester</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab 4: Forage Simulations -->
+                <div id="forage-sim" class="cred-content-pane hidden space-y-4">
+                  <h4
+                    class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2"
+                  >
+                    Forage Virtual Experience &amp; Job Simulations
+                  </h4>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm"
+                  >
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>AIG — Shields Up Cybersecurity Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Datacom — Software Development Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Clifford Chance — Cyber Security Global
+                        Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Deloitte Australia — Technology Job Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Datacom — Cybersecurity Job Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Electronic Arts — Software Engineering Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Deloitte Australia — Cyber Job Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >JPMorgan Chase — Software Engineering Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >DLA Piper — Global Cyber &amp; Data Privacy
+                        Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Quantium — Software Engineering Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>Mastercard — Cybersecurity Job Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Skyscanner — Front-End Software Engineering
+                        Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span>PwC — Cyber Security Consulting Simulation</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Walmart — Advanced Software Engineering
+                        Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Tata Consultancy Services — Cybersecurity Analyst
+                        Simulation</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <i
+                        class="fa-solid fa-circle-check text-brand-600 mt-1"
+                      ></i>
+                      <span
+                        >Y Combinator — Startup Software Engineering
+                        Simulation</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Academic record & languages -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal mt-12"
+            >
+              <!-- Academic Record -->
+              <div class="glass-panel p-6 md:p-8 rounded-3xl">
+                <div class="flex items-center gap-3 mb-6">
+                  <div
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"
+                  >
+                    <i class="fa-solid fa-user-graduate"></i>
+                  </div>
+                  <h4 class="text-xl font-serif font-bold text-slate-900">
+                    Academic History
+                  </h4>
+                </div>
+                <ul class="space-y-4">
+                  <li>
+                    <div class="flex justify-between items-baseline">
+                      <p class="text-slate-900 font-semibold text-sm">
+                        Pearson BTEC Level 5 HND in Computing
+                      </p>
+                      <span class="text-xs text-brand-600 font-bold"
+                        >Merit</span
+                      >
+                    </div>
+                    <p class="text-slate-500 text-xs">
+                      ESOFT Metro Campus · 2021 – 2023
+                    </p>
+                  </li>
+                  <li>
+                    <p class="text-slate-900 font-semibold text-sm">
+                      Diploma in Information &amp; Communication Technology
+                    </p>
+                    <p class="text-slate-500 text-xs">
+                      Nenasala ICT Training Center · 2019 – 2020
+                    </p>
+                  </li>
+                  <li>
+                    <p class="text-slate-900 font-semibold text-sm">
+                      Diploma in English Language
+                    </p>
+                    <p class="text-slate-500 text-xs">
+                      Nenasala ICT Training Center · 2019 – 2020
+                    </p>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Languages -->
+              <div
+                class="glass-panel p-6 md:p-8 rounded-3xl flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center gap-3 mb-6">
+                    <div
+                      class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"
+                    >
+                      <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h4 class="text-xl font-serif font-bold text-slate-900">
+                      Languages
+                    </h4>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                      <span class="text-slate-900 text-sm font-medium"
+                        >English</span
+                      >
+                      <span class="text-xs text-brand-600 font-semibold"
+                        >Full Working Proficiency</span
+                      >
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-slate-900 text-sm font-medium"
+                        >Sinhala</span
+                      >
+                      <span class="text-xs text-brand-600 font-semibold"
+                        >Native / Bilingual Proficiency</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONNECT -->
+        <section
+          id="contact-form-section"
+          class="py-24 relative z-10 bg-slate-50 overflow-hidden"
+        >
+          <div class="absolute inset-0 z-0 pointer-events-none">
+            <div
+              class="absolute top-0 left-1/3 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute bottom-0 right-1/4 w-80 h-80 bg-emerald-200/30 rounded-full blur-3xl"
+            ></div>
+          </div>
+          <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16 reveal">
+              <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">
+                Let's <span class="text-gradient">Connect</span>
+              </h2>
+              <p class="text-slate-500 max-w-2xl mx-auto">
+                Find me across the web, or reach out directly through any of the
+                channels below.
+              </p>
+            </div>
+            <!-- Dynamically filled by JS from siteData.socials -->
+            <div
+              id="connect-socials-grid"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto reveal"
+            ></div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer
+        class="bg-slate-50 pt-16 pb-8 border-t border-slate-200 relative z-10"
+      >
+        <div class="container mx-auto px-6 md:px-12">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <!-- Brand -->
+            <div class="flex flex-col items-start">
+              <div class="flex items-center gap-2 mb-6">
+                <div
+                  class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-400 to-brand-600 flex items-center justify-center"
+                >
+                  <span class="font-serif font-bold text-white text-xl"
+                    >KE</span
+                  >
+                </div>
+                <span
+                  class="font-serif text-xl font-semibold tracking-wide text-slate-900"
+                >
+                  Kavin Eksith<span class="text-brand-500">.</span>
+                </span>
+              </div>
+              <p class="text-slate-500 text-sm leading-relaxed max-w-sm">
+                I craft bespoke, high-converting landing pages tailored to boost
+                social media engagement, alongside delivering robust IT
+                automation, data transformation, and cybersecurity consulting.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="flex flex-col items-start md:items-center">
+              <h4
+                class="text-slate-900 font-medium mb-6 uppercase tracking-widest text-sm"
+              >
+                Quick Links
+              </h4>
+              <div class="flex flex-col gap-4">
+                <a
+                  href="#about"
+                  class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+                  >About</a
+                >
+                <a
+                  href="#projects"
+                  class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+                  >Projects</a
+                >
+              </div>
+            </div>
+
+            <!-- Socials Connect -->
+            <div class="flex flex-col items-start md:items-end">
+              <h4
+                class="text-slate-900 font-medium mb-6 uppercase tracking-widest text-sm"
+              >
+                Connect With Me
+              </h4>
+              <div
+                id="footer-socials"
+                class="grid grid-cols-3 gap-3 sm:gap-4 mb-6"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div
+            class="pt-8 border-t border-slate-200 flex flex-col items-center gap-2"
+          >
+            <p class="text-slate-400 text-sm text-center">
+              &copy; <span id="currentYear"></span> Kavin Eksith. All rights
+              reserved.
+            </p>
+            <p class="text-slate-400 text-sm text-center">
+              Designed with <span class="text-brand-500">&hearts;</span> for
+              excellence.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- SCROLL TO TOP -->
+      <button
+        id="scrollToTop"
+        class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-40 w-14 h-14 bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 text-white rounded-full shadow-xl shadow-brand-500/40 hover:shadow-brand-400/60 hover:scale-110 backdrop-blur-sm border-2 border-brand-300/30 transition-all duration-300 flex items-center justify-center hidden opacity-0"
+        aria-label="Scroll to top"
+      >
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+      </button>
+
+      <!-- TOAST ALERTS NOTIFICATIONS -->
+      <div
+        id="toastNotification"
+        class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl backdrop-blur-md border hidden transition-all duration-300 translate-y-4"
+      >
+        <span id="toastIcon"></span>
+        <p
+          id="toastMessage"
+          class="font-medium tracking-wide whitespace-nowrap"
+        ></p>
+        <button
+          id="closeToast"
+          class="ml-4 hover:opacity-70 transition-opacity"
+        >
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Main jQuery & dynamic components initialization script -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
