@@ -161,6 +161,11 @@ $(function () {
         platform: "Medium",
         icon: "fa-brands fa-medium",
         url: "https://kavineksith.medium.com"
+      },
+      {
+        platform: "freeCodeCamp",
+        icon: "fa-brands fa-free-code-camp",
+        url: "https://www.freecodecamp.org/kavin-eksith"
       }
     ]
   };
