@@ -169,7 +169,7 @@ $(function () {
       },
       {
         platform: "CodePen",
-        icon: "fa-brands fa-free-code-pen",
+        icon: "fa-brands fa-codepen",
         url: "https://codepen.io/kavineksith"
       },
     ]
