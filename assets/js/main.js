@@ -172,6 +172,11 @@ $(function () {
         icon: "fa-brands fa-codepen",
         url: "https://codepen.io/kavineksith"
       },
+      {
+        platform: "Frontend Mentor",
+        icon: "fa-solid fa-code",
+        url: "https://www.frontendmentor.io/profile/kavineksith"
+      },
     ]
   };
 
