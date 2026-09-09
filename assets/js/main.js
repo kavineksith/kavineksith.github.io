@@ -4,9 +4,9 @@
 $(function () {
   'use strict';
 
-  // ==========================================
-  // CONFIGURATION DATA (Ported from React)
-  // ==========================================
+  // ===================
+  // CONFIGURATION DATA
+  // ===================
   const siteData = {
     company: {
       name: "Kavin Eksith | Portfolio",
@@ -166,7 +166,12 @@ $(function () {
         platform: "freeCodeCamp",
         icon: "fa-brands fa-free-code-camp",
         url: "https://www.freecodecamp.org/kavin-eksith"
-      }
+      },
+      {
+        platform: "CodePen",
+        icon: "fa-brands fa-free-code-pen",
+        url: "https://codepen.io/kavineksith"
+      },
     ]
   };
 
