@@ -1,0 +1,62 @@
+{
+  "category": "privacy",
+  "label": "Privacy-Focused",
+  "projects": [
+    {
+      "id": "passguardian",
+      "title": "PassGuardian",
+      "category": "privacy",
+      "tags": [
+        "Password Security",
+        "Async",
+        "Pure stdlib"
+      ],
+      "lang": "Python",
+      "description": "A password strength checker and crack-time estimator, built as a CLI-based, async, pure-stdlib security portfolio tool.",
+      "source_code": "https://github.com/kavineksith/PassGuardian---Password-Strength-Checker-Crack-Time-Estimator",
+      "live_preview": ""
+    },
+    {
+      "id": "password-generator",
+      "title": "PassForge (Password Generator)",
+      "category": "privacy",
+      "tags": [
+        "Password Generation",
+        "Async",
+        "Audit Logging"
+      ],
+      "lang": "Python",
+      "description": "An industrial-grade, asynchronous CLI password and passphrase generator that produces cryptographically secure strings and EFF-wordlist passphrases under enforceable policy constraints, with full accountability logging.",
+      "source_code": "https://github.com/kavineksith/Password-Generator",
+      "live_preview": ""
+    },
+    {
+      "id": "vaultcontacts",
+      "title": "VaultContacts",
+      "category": "privacy",
+      "tags": [
+        "AES-256-GCM",
+        "Encryption",
+        "Contact Manager"
+      ],
+      "lang": "Python",
+      "description": "An AES-256-GCM encrypted CLI contact manager for storing and managing personal contact information securely on disk.",
+      "source_code": "https://github.com/kavineksith/VaultContacts---Encrypted-CLI-Contact-Manager",
+      "live_preview": ""
+    },
+    {
+      "id": "shieldguard-extreme",
+      "title": "ShieldGuard Extreme",
+      "category": "privacy",
+      "tags": [
+        "Adblocker",
+        "Privacy",
+        "Tracker Prevention"
+      ],
+      "lang": "JavaScript",
+      "description": "A high-performance, zero-telemetry privacy engine that combines aggressive ad-blocking with intelligent tracker prevention inside a single lightweight, hardened framework.",
+      "source_code": "https://github.com/kavineksith/shieldguard-extreme",
+      "live_preview": ""
+    }
+  ]
+}

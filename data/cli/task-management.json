@@ -1,0 +1,34 @@
+{
+  "category": "task-management",
+  "label": "Daily Task Management",
+  "projects": [
+    {
+      "id": "taskguard",
+      "title": "TaskGuard",
+      "category": "task-management",
+      "tags": [
+        "Encrypted Storage",
+        "CLI",
+        "Task Manager"
+      ],
+      "lang": "Python",
+      "description": "An encrypted CLI task manager for privacy-conscious daily task tracking, storing all task data in an encrypted local store.",
+      "source_code": "https://github.com/kavineksith/TaskGuard-Encrypted-CLI-Task-Manager",
+      "live_preview": ""
+    },
+    {
+      "id": "cortex-cli-assistant",
+      "title": "Cortex CLI Assistant",
+      "category": "task-management",
+      "tags": [
+        "Async",
+        "Personal Assistant",
+        "Reminders"
+      ],
+      "lang": "Python",
+      "description": "A dependency-free, async, parallel CLI personal assistant for managing tasks, reminders, and daily advice, rewritten from a voice-based prototype into a robust, scriptable command-line tool with a full accountability trail.",
+      "source_code": "https://github.com/kavineksith/Cortex-CLI-Assistant",
+      "live_preview": ""
+    }
+  ]
+}

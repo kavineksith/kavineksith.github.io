@@ -1,0 +1,62 @@
+{
+  "category": "it-support",
+  "label": "IT Support & Utilities",
+  "projects": [
+    {
+      "id": "file-organizer-pro",
+      "title": "File Organizer Pro",
+      "category": "it-support",
+      "tags": [
+        "Automation",
+        "File Management",
+        "Async"
+      ],
+      "lang": "Python",
+      "description": "An async, parallel, memory-efficient CLI tool that sorts files into category folders with checksum-based duplicate detection, dry-run simulation, structured logging, and end-of-run reports.",
+      "source_code": "https://github.com/kavineksith/File-Organizer-Pro",
+      "live_preview": ""
+    },
+    {
+      "id": "qrforge",
+      "title": "QRForge",
+      "category": "it-support",
+      "tags": [
+        "QR Codes",
+        "Zero Dependency",
+        "Async"
+      ],
+      "lang": "Python",
+      "description": "A from-scratch, ISO/IEC 18004-compliant QR code generator written in pure-stdlib Python, implementing Reed-Solomon error correction, data encoding, mask penalty scoring, and PNG output with zero third-party dependencies.",
+      "source_code": "https://github.com/kavineksith/QRForge-Zero-Dependency-Async-QR-Code-Engine",
+      "live_preview": ""
+    },
+    {
+      "id": "mailguard",
+      "title": "MailGuard",
+      "category": "it-support",
+      "tags": [
+        "Email Automation",
+        "Async",
+        "Audit Logging"
+      ],
+      "lang": "Python",
+      "description": "A secure, async, CLI-based email sending system with encrypted configuration, structured audit logging, and bounded-concurrency bulk delivery.",
+      "source_code": "https://github.com/kavineksith/MailGuard-Email-Automation-System",
+      "live_preview": ""
+    },
+    {
+      "id": "uuid-toolkit",
+      "title": "UUID Toolkit",
+      "category": "it-support",
+      "tags": [
+        "UUID",
+        "Async",
+        "Parallel"
+      ],
+      "lang": "Python",
+      "description": "A production-oriented UUID toolkit that generates UUIDs (v1, v3, v4, v5, timestamp) and inspects/classifies existing UUID strings, async and parallel-capable, with full audit logging.",
+      "source_code": "https://github.com/kavineksith/UUID-Toolkit",
+      "live_preview": ""
+    }
+  ]
+}
