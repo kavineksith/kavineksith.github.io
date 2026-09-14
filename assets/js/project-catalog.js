@@ -61,7 +61,7 @@ $(function () {
   function validateSearchInput(raw) {
     let value = String(raw || '');
     value = value.slice(0, SEARCH_MAX_LEN);
-    value = value.replace(/<[^>]*>/g, '');
+    value = value.replace(/[<>]/g, '');
     if (value.length > 0 && !SEARCH_SAFE_PATTERN.test(value)) {
       return { value: value.replace(/[^a-zA-Z0-9\s\-_.+#/]/g, ''), warned: true };
     }
