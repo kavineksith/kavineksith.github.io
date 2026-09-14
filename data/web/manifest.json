@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "id": "real-world",
+      "label": "Real-world Projects",
+      "file": "real-world.json",
+      "count": 6
+    },
+    {
+      "id": "dummy",
+      "label": "Dummy / Concept Projects",
+      "file": "dummy.json",
+      "count": 4
+    },
+    {
+      "id": "personal",
+      "label": "Personal Templates",
+      "file": "personal.json",
+      "count": 4
+    }
+  ]
+}

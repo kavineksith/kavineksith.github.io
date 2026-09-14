@@ -1,0 +1,105 @@
+{
+  "category": "sysadmin",
+  "label": "Sysadmin Tools",
+  "projects": [
+    {
+      "id": "linuxlab",
+      "title": "LinuxLab",
+      "category": "sysadmin",
+      "tags": [
+        "Linux",
+        "Bash",
+        "Training",
+        "Containers"
+      ],
+      "lang": "Shell",
+      "description": "A hands-on Linux practice lab with realistic scenario tasks, an automated grader, progressive hints, and progress tracking. Runs as a Podman/Docker container or installs natively on Debian-based hosts.",
+      "source_code": "https://github.com/kavineksith/linuxlab",
+      "live_preview": ""
+    },
+    {
+      "id": "log-analyzer",
+      "title": "Log Analyzer",
+      "category": "sysadmin",
+      "tags": [
+        "Logs",
+        "Async",
+        "Monitoring"
+      ],
+      "lang": "Python",
+      "description": "A multi-format, async log analysis tool built as a production-depth portfolio project for parsing, filtering, and summarizing large log files.",
+      "source_code": "https://github.com/kavineksith/Log-Analyzer",
+      "live_preview": ""
+    },
+    {
+      "id": "siem-log-analyzer",
+      "title": "SIEM Log Analyzer & Visualization Tool",
+      "category": "sysadmin",
+      "tags": [
+        "SIEM",
+        "Security",
+        "Visualization"
+      ],
+      "lang": "Python",
+      "description": "A log analyzer and visualization tool for security event monitoring, built to aggregate and surface security-relevant findings from log data.",
+      "source_code": "https://github.com/kavineksith/SIEM-Log-Analyzer-Visualization-Tool",
+      "live_preview": ""
+    },
+    {
+      "id": "system-analysis-management-toolkit",
+      "title": "System Analysis and Management Toolkit",
+      "category": "sysadmin",
+      "tags": [
+        "Hardware Profiling",
+        "WMI",
+        "Performance"
+      ],
+      "lang": "Python",
+      "description": "A suite of four advanced Python projects for deep system analysis, hardware profiling, secure WMI management, and high-performance system utilities, built with memory optimization and parallel/async processing.",
+      "source_code": "https://github.com/kavineksith/System-Analysis-and-Management-Toolkit",
+      "live_preview": ""
+    },
+    {
+      "id": "linux-user-permission-mgmt",
+      "title": "Linux User & Permission Management System",
+      "category": "sysadmin",
+      "tags": [
+        "User Management",
+        "Bash",
+        "Bulk Operations"
+      ],
+      "lang": "Shell",
+      "description": "A production-grade, fully shell-based CLI tool (usermgr) for managing Linux users, groups, passwords, and file permissions, with parallel bulk operations, structured JSON-lines audit logging, and args-based and interactive modes.",
+      "source_code": "https://github.com/kavineksith/Linux-User-and-Permission-Management-System",
+      "live_preview": ""
+    },
+    {
+      "id": "sysguard",
+      "title": "SysGuard",
+      "category": "sysadmin",
+      "tags": [
+        "Security Audit",
+        "Linux",
+        "Risk Scoring"
+      ],
+      "lang": "Python",
+      "description": "An async Python CLI that audits Linux user accounts, passwords, sudoers rules, and filesystem permissions, producing structured, risk-ranked security findings with JSON/CSV/text export.",
+      "source_code": "https://github.com/kavineksith/SysGuard-Linux-Security-Audit-Account-Intelligence-CLI",
+      "live_preview": ""
+    },
+    {
+      "id": "server-hardening-toolkit",
+      "title": "Server Hardening Toolkit",
+      "category": "sysadmin",
+      "tags": [
+        "Hardening",
+        "Automation",
+        "Idempotent"
+      ],
+      "lang": "Shell",
+      "description": "A professional, fully automated server hardening script built with a DRY function-library architecture. Every module is independent, idempotent, and safe to re-run, with full dry-run support.",
+      "source_code": "https://github.com/kavineksith/Server-Hardening-Toolkit",
+      "live_preview": ""
+    }
+  ]
+}
