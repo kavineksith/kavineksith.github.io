@@ -197,44 +197,19 @@ $(function () {
   // DYNAMIC COMPONENT RENDERING
   // ==========================================
 
-  // Render Projects (Main page first 6 only — full catalog now lives on cli-projects.html)
+  // Render Projects (Main page first 6, Modal all 14)
   const $projectsGrid = $('#projects-grid');
-
-  // Basic HTML-escaping helper — defense in depth even though this data is
-  // author-controlled, so any future dynamic/user-supplied field stays safe.
-  function escapeHtml(str) {
-    if (str === null || str === undefined) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
-  function sanitizeUrl(url) {
-    if (!url || typeof url !== 'string') return '#';
-    try {
-      const parsed = new URL(url, window.location.href);
-      if (parsed.protocol === 'https:' || parsed.protocol === 'http:') return parsed.href;
-    } catch (e) { /* fall through */ }
-    return '#';
-  }
+  const $modalProjectsGrid = $('#modal-projects-grid');
 
   function getProjectHtml(project, index) {
     const gradient = GRADIENTS[index % GRADIENTS.length];
-    const url = sanitizeUrl(project.url);
-    const icon = escapeHtml(project.icon);
-    const category = escapeHtml(project.category);
-    const title = escapeHtml(project.title);
-    const description = escapeHtml(project.description);
     return `
-      <a href="${url}" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer block border border-white/60 hover:border-brand-400/60 transition-all duration-500 bg-gradient-to-br ${gradient} backdrop-blur-xl project-card-link shadow-[0_8px_32px_-8px_rgba(15,23,42,0.12)] hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)]">
+      <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer block border border-white/60 hover:border-brand-400/60 transition-all duration-500 bg-gradient-to-br ${gradient} backdrop-blur-xl project-card-link shadow-[0_8px_32px_-8px_rgba(15,23,42,0.12)] hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)]">
         <!-- Glossy glass sheen -->
         <div class="absolute inset-0 bg-gradient-to-br from-white/50 via-white/10 to-transparent pointer-events-none"></div>
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div class="text-9xl text-white/50 group-hover:scale-110 group-hover:text-white/70 transition-all duration-700 drop-shadow-sm">
-            <i class="${icon}"></i>
+            <i class="${project.icon}"></i>
           </div>
         </div>
         <div class="absolute top-0 right-0 p-8">
@@ -242,27 +217,44 @@ $(function () {
         </div>
         <!-- Frosted glass text panel -->
         <div class="absolute bottom-0 left-0 right-0 p-6 bg-white/70 backdrop-blur-md border-t border-white/60 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-          <span class="text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block">${category}</span>
-          <h3 class="text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight">${title}</h3>
+          <span class="text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block">${project.category}</span>
+          <h3 class="text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight">${project.title}</h3>
           <p class="text-slate-600 text-xs line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            ${description}
+            ${project.description}
           </p>
         </div>
       </a>
     `;
   }
 
-  // Populate first 6 projects on the main page; the rest live on cli-projects.html
+  // Populate first 6 projects
   siteData.projects.slice(0, 6).forEach(function (project, index) {
     $projectsGrid.append(getProjectHtml(project, index));
   });
 
-  // Render Footer Social Handles (first row only) & current year
+  // Populate all projects for the Modal
+  siteData.projects.forEach(function (project, index) {
+    $modalProjectsGrid.append(getProjectHtml(project, index));
+  });
+
+  // Append a customized contact CTA card in the modal grid
+  const modalCtaCard = `
+    <div class="relative overflow-hidden rounded-3xl aspect-[4/3] flex flex-col items-center justify-center p-8 text-center border border-dashed border-brand-400/50 hover:border-brand-500/70 bg-gradient-to-br from-white/70 to-brand-50/60 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(15,23,42,0.1)] transition-colors group">
+      <h3 class="text-2xl font-serif font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Have a vision?</h3>
+      <p class="text-slate-500 text-sm mb-6">Let's collaborate on your next big project.</p>
+      <a href="#contact" id="modalConnectBtn" class="px-6 py-3 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 text-white font-bold tracking-wide shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-shadow">
+        Connect with Me
+      </a>
+    </div>
+  `;
+  $modalProjectsGrid.append(modalCtaCard);
+
+  // Render Footer Social Handles & current year
   const $footerSocials = $('#footer-socials');
-  siteData.socials.slice(0, 3).forEach(function (social) {
+  siteData.socials.forEach(function (social) {
     const handleHtml = `
-      <a href="${sanitizeUrl(social.url)}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors shadow-sm" aria-label="${escapeHtml(social.platform)}">
-        <i class="${escapeHtml(social.icon)}"></i>
+      <a href="${social.url}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors shadow-sm" aria-label="${social.platform}">
+        <i class="${social.icon}"></i>
       </a>
     `;
     $footerSocials.append(handleHtml);
@@ -273,12 +265,12 @@ $(function () {
   const $connectSocialsGrid = $('#connect-socials-grid');
   siteData.socials.forEach(function (social) {
     const cardHtml = `
-      <a href="${sanitizeUrl(social.url)}" target="_blank" rel="noopener noreferrer"
+      <a href="${social.url}" target="_blank" rel="noopener noreferrer"
         class="glass-panel rounded-2xl p-6 flex flex-col items-center text-center gap-4 border-t border-brand-500/20 hover:border-brand-500/50 hover:-translate-y-1 transition-all duration-300 group">
         <div class="w-14 h-14 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 text-2xl group-hover:scale-110 group-hover:bg-brand-100 transition-all duration-500">
-          <i class="${escapeHtml(social.icon)}"></i>
+          <i class="${social.icon}"></i>
         </div>
-        <span class="text-slate-900 font-medium text-sm tracking-wide">${escapeHtml(social.platform)}</span>
+        <span class="text-slate-900 font-medium text-sm tracking-wide">${social.platform}</span>
       </a>
     `;
     $connectSocialsGrid.append(cardHtml);
@@ -357,10 +349,30 @@ $(function () {
   }
 
 
-  // NOTE: The old "View All Projects" popup modal has been removed.
-  // "View All Projects" and the projects-section CTA now redirect to the
-  // dedicated cli-projects.html multi-page application (plain <a> links),
-  // so no JS handler is needed here anymore.
+  // ==========================================
+  // PROJECTS OVERLAY MODAL HANDLERS
+  // ==========================================
+  const $projectsModal = $('#projectsModal');
+  const $modalContentBox = $('.modal-content-box');
+
+  $('#viewAllProjectsBtn').on('click', function () {
+    $projectsModal.removeClass('hidden');
+    setTimeout(() => {
+      $modalContentBox.addClass('show');
+    }, 50);
+  });
+
+  function hideProjectsModal() {
+    $modalContentBox.removeClass('show');
+    setTimeout(() => {
+      $projectsModal.addClass('hidden');
+    }, 300);
+  }
+
+  $('#closeProjectsModal, #modalOverlay').on('click', hideProjectsModal);
+  $(document).on('click', '#modalConnectBtn', function () {
+    hideProjectsModal();
+  });
 
 
   // ==========================================
