@@ -1,0 +1,191 @@
+{
+  "$comment": "Technology grid on index.html. Add an item to a group's 'items'. 'icon' is the skillicons.dev id (https://skillicons.dev).",
+  "groups": [
+    {
+      "id": "programming-languages",
+      "label": "Programming Languages",
+      "items": [
+        {
+          "name": "Python",
+          "icon": "py"
+        },
+        {
+          "name": "Java",
+          "icon": "java"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "js"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "ts"
+        },
+        {
+          "name": "Bash",
+          "icon": "bash"
+        },
+        {
+          "name": "PowerShell",
+          "icon": "powershell"
+        },
+        {
+          "name": "Go",
+          "icon": "go"
+        },
+        {
+          "name": "Rust",
+          "icon": "rust"
+        },
+        {
+          "name": "C#",
+          "icon": "cs"
+        },
+        {
+          "name": "PHP",
+          "icon": "php"
+        }
+      ]
+    },
+    {
+      "id": "frontend-technologies",
+      "label": "Frontend Technologies",
+      "items": [
+        {
+          "name": "HTML5",
+          "icon": "html"
+        },
+        {
+          "name": "CSS3",
+          "icon": "css"
+        },
+        {
+          "name": "Sass",
+          "icon": "sass"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwind"
+        }
+      ]
+    },
+    {
+      "id": "frameworks-runtime",
+      "label": "Frameworks & Runtime",
+      "items": [
+        {
+          "name": "React",
+          "icon": "react"
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs"
+        },
+        {
+          "name": "Spring Boot",
+          "icon": "spring"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express"
+        },
+        {
+          "name": "FastAPI",
+          "icon": "fastapi"
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "label": "Databases",
+      "items": [
+        {
+          "name": "PostgreSQL",
+          "icon": "postgres"
+        },
+        {
+          "name": "MySQL",
+          "icon": "mysql"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "mongodb"
+        },
+        {
+          "name": "SQLite",
+          "icon": "sqlite"
+        },
+        {
+          "name": "Supabase",
+          "icon": "supabase"
+        }
+      ]
+    },
+    {
+      "id": "api-development-tools",
+      "label": "API & Development Tools",
+      "items": [
+        {
+          "name": "Postman",
+          "icon": "postman"
+        },
+        {
+          "name": "VS Code",
+          "icon": "vscode"
+        },
+        {
+          "name": "PyCharm",
+          "icon": "pycharm"
+        },
+        {
+          "name": "IntelliJ IDEA",
+          "icon": "idea"
+        },
+        {
+          "name": "WebStorm",
+          "icon": "webstorm"
+        }
+      ]
+    },
+    {
+      "id": "systems-containers-environments",
+      "label": "Systems, Containers & Environments",
+      "items": [
+        {
+          "name": "Linux",
+          "icon": "linux"
+        },
+        {
+          "name": "Docker",
+          "icon": "docker"
+        },
+        {
+          "name": "Anaconda ENV",
+          "icon": "anaconda"
+        }
+      ]
+    },
+    {
+      "id": "devops-version-control",
+      "label": "DevOps & Version Control",
+      "items": [
+        {
+          "name": "Git",
+          "icon": "git"
+        },
+        {
+          "name": "GitHub",
+          "icon": "github"
+        },
+        {
+          "name": "GitHub Actions",
+          "icon": "githubactions"
+        }
+      ]
+    }
+  ]
+}

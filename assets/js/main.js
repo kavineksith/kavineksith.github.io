@@ -344,16 +344,132 @@ $(function () {
 
 
   // ==========================================
-  // CREDENTIALS CATEGORIES TAB SWITCHING
+  // DATA-DRIVEN SECTIONS: TECHNOLOGIES & CREDENTIALS
+  // Content lives in data/site/technologies.json and data/site/credentials.json
   // ==========================================
-  $('.cred-tab-btn').on('click', function () {
-    $('.cred-tab-btn').removeClass('active bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md').addClass('text-slate-500 hover:text-slate-900');
-    $(this).addClass('active bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md').removeClass('text-slate-500 hover:text-slate-900');
+  const TAB_ACTIVE = 'active bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md';
+  const TAB_IDLE = 'text-slate-500 hover:text-slate-900';
 
-    const targetPaneId = $(this).data('target');
+  function loadSiteJson(path) {
+    return window.fetch(path).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + path);
+      return res.json();
+    });
+  }
+
+  // Only allow safe slug characters in ids / data attributes / icon names
+  function slug(value) {
+    return String(value == null ? '' : value).toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function showSectionError($target, message) {
+    $target.empty().append(
+      $('<p class="col-span-full text-center text-slate-400 text-sm" role="alert"></p>').text(message)
+    );
+  }
+
+  // ---- Technologies grid ----
+  function renderTechnologies(data) {
+    const $grid = $('#tech-grid');
+    const groups = Array.isArray(data && data.groups) ? data.groups : [];
+    const html = [];
+    groups.forEach(function (group) {
+      (Array.isArray(group.items) ? group.items : []).forEach(function (item) {
+        const icon = slug(item.icon);
+        if (!item.name || !icon) return;
+        html.push(
+          '<div title="' + escapeHtml(item.name) + '" class="tech-card" data-group="' + escapeHtml(slug(group.id || group.label)) + '">' +
+            '<img src="https://skillicons.dev/icons?i=' + encodeURIComponent(icon) + '" alt="' + escapeHtml(item.name) + '" class="w-12 h-12" loading="lazy" />' +
+          '</div>'
+        );
+      });
+    });
+    if (!html.length) { showSectionError($grid, 'No technologies to show yet.'); return; }
+    $grid.html(html.join(''));
+  }
+
+  // ---- Credentials: tabs + panes, academic history, languages ----
+  function renderCredentialTabs(tabs) {
+    const $tabs = $('#cred-tabs');
+    const $contents = $('#cred-tab-contents');
+    const valid = (Array.isArray(tabs) ? tabs : []).filter(function (t) { return t && slug(t.id) && t.label; });
+    if (!valid.length) { $tabs.empty(); showSectionError($contents, 'No credentials to show yet.'); return; }
+
+    const btnHtml = [];
+    const paneHtml = [];
+    valid.forEach(function (tab, i) {
+      const id = slug(tab.id);
+      const first = i === 0;
+      btnHtml.push(
+        '<button type="button" role="tab" aria-selected="' + first + '" aria-controls="' + id + '" ' +
+        'class="cred-tab-btn ' + (first ? TAB_ACTIVE : TAB_IDLE) + ' px-4 py-2 text-xs md:text-sm font-semibold rounded-xl transition-all" ' +
+        'data-target="' + id + '">' + escapeHtml(tab.label) + '</button>'
+      );
+      const items = (Array.isArray(tab.items) ? tab.items : []).map(function (text) {
+        return '<div class="flex items-start gap-2">' +
+          '<i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>' +
+          '<span>' + escapeHtml(text) + '</span></div>';
+      }).join('');
+      paneHtml.push(
+        '<div id="' + id + '" role="tabpanel" class="cred-content-pane space-y-4' + (first ? '' : ' hidden') + '">' +
+          '<h4 class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2">' + escapeHtml(tab.heading || tab.label) + '</h4>' +
+          '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm">' + items + '</div>' +
+        '</div>'
+      );
+    });
+    $tabs.html(btnHtml.join(''));
+    $contents.html(paneHtml.join(''));
+  }
+
+  function renderAcademic(list) {
+    const html = (Array.isArray(list) ? list : []).map(function (entry) {
+      const meta = [entry.institution, entry.period].filter(Boolean).map(escapeHtml).join(' · ');
+      const title = '<p class="text-slate-900 font-semibold text-sm">' + escapeHtml(entry.title) + '</p>';
+      const head = entry.grade
+        ? '<div class="flex justify-between items-baseline">' + title +
+            '<span class="text-xs text-brand-600 font-bold">' + escapeHtml(entry.grade) + '</span></div>'
+        : title;
+      return '<li>' + head + '<p class="text-slate-500 text-xs">' + meta + '</p></li>';
+    }).join('');
+    $('#academic-list').html(html);
+  }
+
+  function renderLanguages(list) {
+    const html = (Array.isArray(list) ? list : []).map(function (lang) {
+      return '<div class="flex justify-between items-center">' +
+        '<span class="text-slate-900 text-sm font-medium">' + escapeHtml(lang.name) + '</span>' +
+        '<span class="text-xs text-brand-600 font-semibold">' + escapeHtml(lang.proficiency) + '</span></div>';
+    }).join('');
+    $('#languages-list').html(html);
+  }
+
+  // Delegated, so it works for buttons rendered after the JSON loads
+  $('#cred-tabs').on('click', '.cred-tab-btn', function () {
+    const $btn = $(this);
+    $('#cred-tabs .cred-tab-btn')
+      .removeClass(TAB_ACTIVE).addClass(TAB_IDLE).attr('aria-selected', 'false');
+    $btn.removeClass(TAB_IDLE).addClass(TAB_ACTIVE).attr('aria-selected', 'true');
     $('.cred-content-pane').addClass('hidden');
-    $('#' + targetPaneId).removeClass('hidden');
+    $('#' + slug($btn.attr('data-target'))).removeClass('hidden');
   });
+
+  loadSiteJson('data/site/technologies.json')
+    .then(renderTechnologies)
+    .catch(function (err) {
+      console.error('Could not load technologies:', err);
+      showSectionError($('#tech-grid'), 'Technologies could not be loaded right now.');
+    });
+
+  loadSiteJson('data/site/credentials.json')
+    .then(function (data) {
+      renderCredentialTabs(data.tabs);
+      renderAcademic(data.academic);
+      renderLanguages(data.languages);
+    })
+    .catch(function (err) {
+      console.error('Could not load credentials:', err);
+      showSectionError($('#cred-tab-contents'), 'Credentials could not be loaded right now.');
+    });
 
 
   // ==========================================

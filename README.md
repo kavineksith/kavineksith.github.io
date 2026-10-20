@@ -17,9 +17,9 @@ A premium, light "liquid glass" themed personal portfolio showcasing full-stack 
   - **GitHub Projects** — Java/Spring Boot services, testing & QA demos, static sites, and other repositories without a live deployment
   - **Portfolio Projects** — featured work with role, year, tech stack and highlights (`pages/portfolio-projects.html`, `data/portfolio/`)
 - **Search & filter** on every catalog page — filter by category, language, and live-preview/source-code availability, with input validation and XSS-safe rendering
-- **JSON-driven project data** — each division's projects live in their own JSON files under `data/`, loaded at runtime via a shared catalog script
-- **Technology grid** with hover-animated, liquid-glass tech icons
-- **Credentials & certifications** section with tabbed categories
+- **JSON-driven content** — each division's projects, the technology grid, and the credentials section all live in JSON files under `data/`, loaded at runtime (no HTML edits to update them)
+- **Technology grid** with hover-animated, liquid-glass tech icons — JSON-driven (`data/site/technologies.json`)
+- **Credentials & certifications** section with tabbed categories, academic history and languages — JSON-driven (`data/site/credentials.json`)
 - **Connect section** — social links (LinkedIn, GitHub, Portfolio, Medium) rendered as glass cards, with the first row mirrored in the footer
 - **Home button & consistent navigation** across every page, with a responsive navbar that adapts cleanly from mobile through shrunk desktop windows up to full width
 - **Scroll-reveal animations** and sticky header with scroll-aware styling
@@ -38,7 +38,8 @@ A premium, light "liquid glass" themed personal portfolio showcasing full-stack 
 │   ├── cli-projects.html            # Division 2: CLI & sysadmin tools (searchable/filterable)
 │   ├── github-projects.html         # Division 3: GitHub-only repositories (searchable/filterable)
 │   └── portfolio-projects.html      # Division 4: featured portfolio projects (searchable/filterable)
-├── data/                          # JSON data consumed by the catalog pages
+├── data/                          # JSON data consumed by the homepage and catalog pages
+│   ├── site/                        # technologies.json (tech grid), credentials.json (certs, education, languages)
 │   ├── web/                         # real-world.json, personal.json, templates.json, dummy.json, manifest.json
 │   ├── portfolio/                   # portfolio.json, manifest.json
 │   ├── cli/                         # networking.json, sysadmin.json, privacy.json,
@@ -50,7 +51,7 @@ A premium, light "liquid glass" themed personal portfolio showcasing full-stack 
 │   ├── scss/styles.scss           # Source SCSS
 │   └── js/
 │       ├── main.js                  # Homepage interactivity: nav, reveal animations, canvas
-│       │                             # background, dynamic project/social rendering
+│       │                             # background, dynamic project/social/technology/credentials rendering
 │       ├── project-core.js          # Shared: JSON loading, status model, GitHub language detection
 │       └── project-catalog.js       # Shared search/filter/render logic for all pages/*.html
 ├── scripts/update_languages.py    # Optional: bake GitHub languages into the JSON files
@@ -68,7 +69,7 @@ Each `data/<division>/manifest.json` lists that division's category files by fil
 | Markup | HTML5 |
 | Styling | Tailwind CSS (CDN) + custom SCSS |
 | Interactivity | jQuery, Canvas API |
-| Data | Static JSON, fetched client-side per project division |
+| Data | Static JSON, fetched client-side (projects per division, plus technologies & credentials) |
 | Fonts | Sora, DM Serif Display, Raleway (Google Fonts) |
 | Hosting | GitHub Pages |
 
@@ -162,3 +163,73 @@ GITHUB_TOKEN=ghp_xxx python3 scripts/update_languages.py
 ```
 
 Projects with a baked `languages` array are never fetched at runtime.
+
+## 🧩 Managing Technologies & Credentials
+
+The **Technologies** grid and the **Credentials** section on `index.html` are rendered from two JSON files in `data/site/`. To update either one, edit the JSON only — `index.html` just contains empty containers (`#tech-grid`, `#cred-tabs`, `#cred-tab-contents`, `#academic-list`, `#languages-list`) that `assets/js/main.js` fills in on page load.
+
+| What you're changing | File |
+| --- | --- |
+| Technology icons in the grid | `data/site/technologies.json` |
+| Certifications, academic history, languages | `data/site/credentials.json` |
+
+### `data/site/technologies.json`
+
+```json
+{
+  "groups": [
+    {
+      "id": "programming-languages",
+      "label": "Programming Languages",
+      "items": [
+        { "name": "Python", "icon": "py" }
+      ]
+    }
+  ]
+}
+```
+
+- **`groups`** — organizational only (keeps the file easy to scan). The page renders every item as one continuous grid, in file order, and tags each card with `data-group`.
+- **`name`** — shown as the hover tooltip and the image `alt` text.
+- **`icon`** — the [skillicons.dev](https://skillicons.dev) icon ID (e.g. `py`, `js`, `docker`, `githubactions`). Only letters, numbers, `-` and `_` are accepted.
+- **Add a technology:** append `{ "name": "...", "icon": "..." }` to the right group's `items`. **Add a group:** add a new object with `id`, `label` and `items`.
+
+### `data/site/credentials.json`
+
+```json
+{
+  "tabs": [
+    {
+      "id": "security-gov",
+      "label": "Cybersecurity & Governance",
+      "heading": "Cybersecurity & Governance Certification Track",
+      "items": ["Cisco CyberOps Associate"]
+    }
+  ],
+  "academic": [
+    {
+      "title": "Pearson BTEC Level 5 HND in Computing",
+      "institution": "ESOFT Metro Campus",
+      "period": "2021 – 2023",
+      "grade": "Merit"
+    }
+  ],
+  "languages": [
+    { "name": "English", "proficiency": "Full Working Proficiency" }
+  ]
+}
+```
+
+- **`tabs`** — one object per certification tab, shown in file order; the first tab is active by default.
+  - `id` — unique slug (letters, numbers, `-`, `_`), used to link the tab button to its panel.
+  - `label` — text on the tab button. `heading` — title inside the panel (falls back to `label`).
+  - `items` — plain-text certification names, one per line item. Add a new certification by appending a string.
+- **`academic`** — `title`, `institution`, `period` are shown on every entry; `grade` is optional and renders as a badge.
+- **`languages`** — `name` and `proficiency`.
+
+### Notes
+
+- All values are inserted as escaped text, so plain characters like `&` and `<` are safe to type directly in the JSON (no `&amp;` needed).
+- The JSON is loaded with `fetch`, so test locally through `python3 -m http.server`, not `file://`.
+- If a file is missing or invalid JSON, that section shows a short "could not be loaded" message and the error is logged to the browser console.
+- Validate edits quickly with `python3 -m json.tool data/site/technologies.json` (and the same for `credentials.json`).
