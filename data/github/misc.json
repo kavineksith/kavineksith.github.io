@@ -11,6 +11,7 @@
         "Web Audio API"
       ],
       "lang": "TypeScript",
+      "status": "completed",
       "description": "A modern, full-featured web-based drum machine, 16-step pattern sequencer, and sound design suite built with React, TypeScript, Tailwind CSS, Framer Motion, and the Web Audio API.",
       "source_code": "https://github.com/kavineksith/Pulse-Pads-Studio",
       "live_preview": ""
@@ -23,7 +24,8 @@
         "Demo"
       ],
       "lang": "Unspecified",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/demo-inventory-project",
       "live_preview": ""
     },
@@ -35,7 +37,8 @@
         "REST API"
       ],
       "lang": "Unspecified",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/IMIPS-REST-API",
       "live_preview": ""
     },
@@ -48,7 +51,8 @@
         "Shell"
       ],
       "lang": "Shell",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project. See the documented Server Hardening Toolkit in CLI & Sysadmin Tools for the earlier version.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project. See the documented Server Hardening Toolkit in CLI & Sysadmin Tools for the earlier version.",
       "source_code": "https://github.com/kavineksith/Server-Hardening-Toolkit-V3",
       "live_preview": ""
     }

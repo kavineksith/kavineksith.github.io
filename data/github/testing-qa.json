@@ -11,7 +11,8 @@
         "React"
       ],
       "lang": "JavaScript",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/React-E2E-Testing-with-Unit-Integration-Testing",
       "live_preview": ""
     },
@@ -24,7 +25,8 @@
         "Automation Testing"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/Selenium-Automation-Testing-with-Java",
       "live_preview": ""
     },
@@ -37,7 +39,8 @@
         "Integration Testing"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/Java-Unit-Integration-Testing-Demo",
       "live_preview": ""
     },
@@ -50,7 +53,8 @@
         "BDD"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/Java-Cucumber-Testing-Demo",
       "live_preview": ""
     }

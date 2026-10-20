@@ -7,16 +7,22 @@
       "count": 6
     },
     {
+      "id": "personal",
+      "label": "Personal Projects",
+      "file": "personal.json",
+      "count": 0
+    },
+    {
+      "id": "templates",
+      "label": "Personal Templates",
+      "file": "templates.json",
+      "count": 3
+    },
+    {
       "id": "dummy",
       "label": "Dummy / Concept Projects",
       "file": "dummy.json",
-      "count": 4
-    },
-    {
-      "id": "personal",
-      "label": "Personal Templates",
-      "file": "personal.json",
-      "count": 4
+      "count": 5
     }
   ]
 }

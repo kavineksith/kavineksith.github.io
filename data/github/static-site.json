@@ -11,6 +11,7 @@
         "GitHub Pages"
       ],
       "lang": "HTML/CSS",
+      "status": "completed",
       "description": "Source repository for this personal portfolio website, hosted on GitHub Pages.",
       "source_code": "https://github.com/kavineksith/kavineksith.github.io",
       "live_preview": "https://kavineksith.github.io/"
@@ -24,6 +25,7 @@
         "Cultural"
       ],
       "lang": "HTML/CSS",
+      "status": "completed",
       "description": "A festive static site created to celebrate Vesak virtually.",
       "source_code": "https://github.com/kavineksith/virtual-vesak-celebration",
       "live_preview": "https://kavineksith.github.io/virtual-vesak-celebration/"

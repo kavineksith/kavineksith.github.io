@@ -12,6 +12,7 @@
         "REST API"
       ],
       "lang": "Java",
+      "status": "completed",
       "description": "A robust and scalable Spring Boot REST API for managing inventory, featuring secure authentication, image uploads, automated email notifications, and professional PDF report generation.",
       "source_code": "https://github.com/kavineksith/Inventory-Management-System---Backend-API",
       "live_preview": ""
@@ -25,7 +26,8 @@
         "Spring Boot"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/CI-CD-Demonstration-with-Spring-Boot-Rest-API",
       "live_preview": ""
     },
@@ -38,7 +40,8 @@
         "Testing"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/Spring-Boot-Unit-and-Integration-Testing-Demo",
       "live_preview": ""
     },
@@ -52,7 +55,8 @@
         "Auth"
       ],
       "lang": "Java",
-      "description": "A repository link only \u2014 no README documentation is currently published for this project.",
+      "status": "completed",
+      "description": "A repository link only — no README documentation is currently published for this project.",
       "source_code": "https://github.com/kavineksith/user-management-rest-api-spring-boot",
       "live_preview": ""
     }

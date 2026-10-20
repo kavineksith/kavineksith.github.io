@@ -3,27 +3,32 @@
     {
       "id": "networking",
       "label": "Networking",
-      "file": "networking.json"
+      "file": "networking.json",
+      "count": 4
     },
     {
       "id": "sysadmin",
       "label": "Sysadmin Tools",
-      "file": "sysadmin.json"
+      "file": "sysadmin.json",
+      "count": 7
     },
     {
       "id": "privacy",
       "label": "Privacy-Focused",
-      "file": "privacy.json"
+      "file": "privacy.json",
+      "count": 4
     },
     {
       "id": "task-management",
       "label": "Daily Task Management",
-      "file": "task-management.json"
+      "file": "task-management.json",
+      "count": 2
     },
     {
       "id": "it-support",
       "label": "IT Support & Utilities",
-      "file": "it-support.json"
+      "file": "it-support.json",
+      "count": 4
     }
   ]
 }

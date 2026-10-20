@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; frame-ancestors 'none';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; object-src 'none'; frame-ancestors 'none';"
     />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -219,12 +219,12 @@
               All <span class="text-gradient">Projects</span>
             </h1>
             <p class="text-slate-500">
-              Everything I've built, organized into three divisions. Pick one to
+              Everything I've built, organized into four divisions. Pick one to
               search and filter within it.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             <!-- Division 1: Web Projects -->
             <a
               href="web-projects.html"
@@ -300,6 +300,31 @@
                 class="text-brand-600 font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
               >
                 Browse GitHub Projects <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </a>
+            <!-- Division 4: Portfolio Projects -->
+            <a
+              href="portfolio-projects.html"
+              class="group glass-panel rounded-3xl p-8 flex flex-col justify-between border border-white/60 hover:border-brand-400/60 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div>
+                <div
+                  class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-600 text-2xl mb-6"
+                >
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <h2 class="text-2xl font-serif font-bold text-slate-900 mb-3">
+                  Portfolio Projects
+                </h2>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                  Featured work with role, tech stack and highlights — tracked
+                  from pending to completed.
+                </p>
+              </div>
+              <span
+                class="text-brand-600 font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              >
+                Browse Portfolio <i class="fa-solid fa-arrow-right"></i>
               </span>
             </a>
           </div>

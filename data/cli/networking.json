@@ -12,6 +12,7 @@
         "CLI"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "A CLI tool for retrieving all default DNS records for a domain and performing reverse DNS resolution lookups, useful for diagnostics and reconnaissance.",
       "source_code": "https://github.com/kavineksith/DNS-Lookup-and-Reverse-Resolution-Tool",
       "live_preview": ""
@@ -26,6 +27,7 @@
         "Port Scanning"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "A comprehensive suite of network analysis and security tools providing real-time monitoring, port scanning, and network diagnostics capabilities.",
       "source_code": "https://github.com/kavineksith/Network-Analysis-and-Security-Toolkit",
       "live_preview": ""
@@ -41,6 +43,7 @@
         "CIDR"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "A comprehensive collection of network calculation tools for IPv4 and IPv6 addressing, subnetting, and CIDR notation conversions.",
       "source_code": "https://github.com/kavineksith/Network-Calculator-Suite",
       "live_preview": ""
@@ -56,6 +59,7 @@
         "Multiprocessing"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "A full-featured IPv4 and IPv6 subnetting calculator covering host counts, network counts, and VLSM, built with async/await, multiprocessing, and generators, backed by 167 unit tests.",
       "source_code": "https://github.com/kavineksith/Subnetting-Calculator",
       "live_preview": ""

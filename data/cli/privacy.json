@@ -12,6 +12,7 @@
         "Pure stdlib"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "A password strength checker and crack-time estimator, built as a CLI-based, async, pure-stdlib security portfolio tool.",
       "source_code": "https://github.com/kavineksith/PassGuardian---Password-Strength-Checker-Crack-Time-Estimator",
       "live_preview": ""
@@ -26,6 +27,7 @@
         "Audit Logging"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "An industrial-grade, asynchronous CLI password and passphrase generator that produces cryptographically secure strings and EFF-wordlist passphrases under enforceable policy constraints, with full accountability logging.",
       "source_code": "https://github.com/kavineksith/Password-Generator",
       "live_preview": ""
@@ -40,6 +42,7 @@
         "Contact Manager"
       ],
       "lang": "Python",
+      "status": "completed",
       "description": "An AES-256-GCM encrypted CLI contact manager for storing and managing personal contact information securely on disk.",
       "source_code": "https://github.com/kavineksith/VaultContacts---Encrypted-CLI-Contact-Manager",
       "live_preview": ""
@@ -54,6 +57,7 @@
         "Tracker Prevention"
       ],
       "lang": "JavaScript",
+      "status": "completed",
       "description": "A high-performance, zero-telemetry privacy engine that combines aggressive ad-blocking with intelligent tracker prevention inside a single lightweight, hardened framework.",
       "source_code": "https://github.com/kavineksith/shieldguard-extreme",
       "live_preview": ""

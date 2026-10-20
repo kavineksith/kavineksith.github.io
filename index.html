@@ -7,7 +7,7 @@
     <!-- Security Headers (HTTP-equivalent via meta tags) -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'none'; object-src 'none'; frame-ancestors 'none';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; object-src 'none'; frame-ancestors 'none';"
     />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -998,11 +998,28 @@
                 ></i>
               </a>
             </div>
-            <!-- Main page first 6 projects loaded by JS -->
+            <!-- Status filter (chips rendered by main.js) -->
+            <div
+              id="home-status-filters"
+              class="flex flex-wrap items-center gap-2 mb-8 reveal"
+              role="group"
+              aria-label="Filter projects by status"
+            ></div>
+
+            <!-- Featured projects loaded from data/web/*.json by main.js -->
             <div
               id="projects-grid"
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              aria-live="polite"
             ></div>
+
+            <p id="home-projects-empty" class="hidden text-center text-slate-500 py-12">
+              No projects with this status yet.
+            </p>
+            <p id="home-projects-error" class="hidden text-center text-slate-500 py-12">
+              <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-2"></i>
+              Couldn't load projects right now. Please try again shortly.
+            </p>
 
             <!-- Redirect card to the full multi-page project catalog -->
             <div
@@ -1013,9 +1030,10 @@
                   Looking for more of my work?
                 </h3>
                 <p class="text-slate-500 text-sm">
-                  Explore the full catalog across three divisions — live web
-                  projects, CLI &amp; sysadmin tools (Python/Shell), and
-                  GitHub-only repositories — each searchable and filterable.
+                  Explore the full catalog across four divisions — live web
+                  projects, CLI &amp; sysadmin tools (Python/Shell),
+                  GitHub-only repositories and featured portfolio work — each
+                  searchable and filterable by status and language.
                 </p>
               </div>
               <a
@@ -1811,6 +1829,7 @@
     <!-- jQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Main jQuery & dynamic components initialization script -->
+    <script src="assets/js/project-core.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

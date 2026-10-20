@@ -1,0 +1,35 @@
+{
+  "category": "portfolio",
+  "label": "Portfolio Projects",
+  "projects": [
+    {
+      "id": "insophinia-pos",
+      "title": "INSOPHINIA Web Based Point of Sale System",
+      "category": "portfolio",
+      "tags": [
+        "POS",
+        "Retail",
+        "PWA"
+      ],
+      "lang": "TypeScript",
+      "status": "ongoing",
+      "icon": "fa-solid fa-cash-register",
+      "year": "2025",
+      "role": "Full-Stack Developer",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "SCSS",
+        "Supabase"
+      ],
+      "highlights": [
+        "Inventory management and sales tracking",
+        "Customer insights for retail businesses",
+        "PWA point-of-sale implementation with REST API design"
+      ],
+      "description": "A comprehensive web-based POS system for retail businesses, featuring inventory management, sales tracking, and customer insights.",
+      "live_preview": "https://insophinia-pos.vercel.app/",
+      "source_code": ""
+    }
+  ]
+}

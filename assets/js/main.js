@@ -13,134 +13,6 @@ $(function () {
       person: "Kavin Eksith",
       since: "May 2025"
     },
-    projects: [
-      {
-        id: 0,
-        title: "INSOPHINIA Web Based Point of Sale System",
-        category: "Real-world Project",
-        url: "https://insophinia-pos.vercel.app/",
-        description: "A comprehensive web-based POS system for retail businesses, featuring inventory management, sales tracking, and customer insights.",
-        icon: "fa-solid fa-cash-register",
-        type: "real-world"
-      },
-      {
-        id: 1,
-        title: "LUCKY Book Shop & Communication",
-        category: "Real-world Project",
-        url: "https://lucky-bookshop.netlify.app/",
-        description: "Top-rated book store offering premium stationery, printing, and communication services.",
-        icon: "fa-solid fa-book",
-        type: "real-world"
-      },
-      {
-        id: 2,
-        title: "Navodaa - Unified Elegance",
-        category: "Real-world Project",
-        url: "https://navodaa.netlify.app/",
-        description: "Beauty, Fashion & Lifestyle brand portfolio including Saloon Navodaa and more.",
-        icon: "fa-solid fa-palette",
-        type: "real-world"
-      },
-      {
-        id: 3,
-        title: "Soundup Music Box",
-        category: "Real-world Project",
-        url: "https://soundupmusicbox.netlify.app/",
-        description: "Premium destination for high-fidelity speakers and professional audio equipment.",
-        icon: "fa-solid fa-music",
-        type: "real-world"
-      },
-      {
-        id: 4,
-        title: "Salon Navodaa",
-        category: "Real-world Project",
-        url: "https://salonnavodaa.netlify.app/",
-        description: "Professional herbal beauty & wellness salon for women in Gampaha.",
-        icon: "fa-solid fa-cut",
-        type: "real-world"
-      },
-      {
-        id: 5,
-        title: "Dream Art Creations",
-        category: "Real-world Project",
-        url: "https://dreamartcreation.netlify.app/",
-        description: "Professional graphic design services including photo editing and branding.",
-        icon: "fa-solid fa-pen-nib",
-        type: "real-world"
-      },
-      {
-        id: 6,
-        title: "Lumina Luxe Spa",
-        category: "Dummy Project",
-        url: "https://lumina-luxe-spa-landing-page.netlify.app/",
-        description: "A premium spa landing page concept with a focus on luxury and relaxation.",
-        icon: "fa-solid fa-spa",
-        type: "dummy"
-      },
-      {
-        id: 7,
-        title: "Ink Rose Tattoo Studio",
-        category: "Dummy Project",
-        url: "https://ink-rose-tattoo-studio.netlify.app/",
-        description: "Bespoke tattoo studio showcase with a modern, feminine aesthetic.",
-        icon: "fa-solid fa-palette",
-        type: "dummy"
-      },
-      {
-        id: 8,
-        title: "Developer Services Page",
-        category: "Dummy Project",
-        url: "https://freelance-developer-landing-page.netlify.app/",
-        description: "Professional landing page for IT services and digital solutions.",
-        icon: "fa-solid fa-laptop-code",
-        type: "dummy"
-      },
-      {
-        id: 9,
-        title: "VibeFlow Music App",
-        category: "Dummy Project",
-        url: "https://vibeflow-music-app.netlify.app/",
-        description: "Modern music player interface with a focus on flow and user experience.",
-        icon: "fa-solid fa-play",
-        type: "dummy"
-      },
-      {
-        id: 10,
-        title: "Project Report Template",
-        category: "Personal Project",
-        url: "https://kavineksith.github.io/Software-Project-Report-Template/",
-        description: "A professional template for software engineering project reports.",
-        icon: "fa-solid fa-file-lines",
-        type: "personal"
-      },
-      {
-        id: 11,
-        title: "Portfolio Template V2",
-        category: "Personal Project",
-        url: "https://kavineksith.github.io/Free-Personal-Portfolio-Website-Template-V2/",
-        description: "The second version of my free personal portfolio website template.",
-        icon: "fa-solid fa-id-card",
-        type: "personal"
-      },
-      {
-        id: 12,
-        title: "Personal Portfolio Template",
-        category: "Personal Project",
-        url: "https://kavineksith.github.io/Free-Personal-Portfolio-Website-Template/",
-        description: "A clean and modern website template for personal portfolios.",
-        icon: "fa-solid fa-user-tie",
-        type: "personal"
-      },
-      {
-        id: 13,
-        title: "DigitalCraft Landing Page",
-        category: "Personal Project",
-        url: "https://kavineksith.github.io/DigitalCraft-Solutions-Landing-Page-Dummy-Project/",
-        description: "A landing page concept for automated data processing services.",
-        icon: "fa-solid fa-project-diagram",
-        type: "personal"
-      }
-    ],
     socials: [
       {
         platform: "LinkedIn",
@@ -197,37 +69,41 @@ $(function () {
   // DYNAMIC COMPONENT RENDERING
   // ==========================================
 
-  // Render Projects (Main page first 6 only — full catalog now lives on cli-projects.html)
+  // ----------------------------------------------------------------
+  // PROJECTS — read from data/web/*.json (same source as the catalog pages)
+  // Shows up to HOME_LIMIT projects; status chips filter the whole set.
+  // ----------------------------------------------------------------
+  const Core = window.ProjectCore;
+  const escapeHtml = Core.escapeHtml;
+  const sanitizeUrl = function (u) { return Core.sanitizeUrl(u) || '#'; };
+
+  const HOME_MANIFEST = 'data/web/manifest.json';
+  const HOME_LIMIT = 6;
+  // Lower number = shown first on the homepage (unlisted categories go last)
+  const CATEGORY_PRIORITY = { 'real-world': 0, personal: 1, templates: 2, dummy: 3 };
+  const CATEGORY_ICONS = {
+    'real-world': 'fa-solid fa-briefcase',
+    personal: 'fa-solid fa-user-gear',
+    templates: 'fa-solid fa-id-card',
+    dummy: 'fa-solid fa-flask'
+  };
+
   const $projectsGrid = $('#projects-grid');
+  const $statusFilters = $('#home-status-filters');
+  const $projectsEmpty = $('#home-projects-empty');
+  const $projectsError = $('#home-projects-error');
 
-  // Basic HTML-escaping helper — defense in depth even though this data is
-  // author-controlled, so any future dynamic/user-supplied field stays safe.
-  function escapeHtml(str) {
-    if (str === null || str === undefined) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
-  function sanitizeUrl(url) {
-    if (!url || typeof url !== 'string') return '#';
-    try {
-      const parsed = new URL(url, window.location.href);
-      if (parsed.protocol === 'https:' || parsed.protocol === 'http:') return parsed.href;
-    } catch (e) { /* fall through */ }
-    return '#';
-  }
+  let homeProjects = [];
+  let homeStatus = 'all';
 
   function getProjectHtml(project, index) {
     const gradient = GRADIENTS[index % GRADIENTS.length];
-    const url = sanitizeUrl(project.url);
-    const icon = escapeHtml(project.icon);
-    const category = escapeHtml(project.category);
+    const url = sanitizeUrl(project.live_preview || project.source_code);
+    const icon = escapeHtml(project.icon || CATEGORY_ICONS[project.category] || 'fa-solid fa-diagram-project');
+    const category = escapeHtml(project.categoryLabel);
     const title = escapeHtml(project.title);
     const description = escapeHtml(project.description);
+    const langs = project.langs.slice(0, 3).map(escapeHtml).join(' · ');
     return `
       <a href="${url}" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer block border border-white/60 hover:border-brand-400/60 transition-all duration-500 bg-gradient-to-br ${gradient} backdrop-blur-xl project-card-link shadow-[0_8px_32px_-8px_rgba(15,23,42,0.12)] hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)]">
         <!-- Glossy glass sheen -->
@@ -237,13 +113,17 @@ $(function () {
             <i class="${icon}"></i>
           </div>
         </div>
+        <!-- Status chip -->
+        <div class="absolute top-4 left-4 z-10">
+          ${Core.statusChipHtml(project.status, 'bg-white/90 backdrop-blur-sm shadow-sm')}
+        </div>
         <div class="absolute top-0 right-0 p-8">
           <div class="w-12 h-1 bg-white/60 rounded-full group-hover:bg-white/90 transition-colors"></div>
         </div>
         <!-- Frosted glass text panel -->
         <div class="absolute bottom-0 left-0 right-0 p-6 bg-white/70 backdrop-blur-md border-t border-white/60 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-          <span class="text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block">${category}</span>
-          <h3 class="text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight">${title}</h3>
+          <span class="text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block">${category}${langs ? ' &middot; ' + langs : ''}</span>
+          <h3 class="text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight line-clamp-2">${title}</h3>
           <p class="text-slate-600 text-xs line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             ${description}
           </p>
@@ -252,9 +132,70 @@ $(function () {
     `;
   }
 
-  // Populate first 6 projects on the main page; the rest live on cli-projects.html
-  siteData.projects.slice(0, 6).forEach(function (project, index) {
-    $projectsGrid.append(getProjectHtml(project, index));
+  function renderHomeStatusChips() {
+    const counts = { all: homeProjects.length };
+    Core.STATUS_ORDER.forEach(function (s) { counts[s] = 0; });
+    homeProjects.forEach(function (p) { counts[p.status] += 1; });
+
+    const items = [{ key: 'all', label: 'All', dot: '' }].concat(
+      Core.STATUS_ORDER.map(function (s) {
+        return { key: s, label: Core.STATUS_META[s].label, dot: Core.STATUS_META[s].dot };
+      })
+    );
+
+    $statusFilters.html(items.map(function (item) {
+      const active = item.key === homeStatus;
+      const empty = item.key !== 'all' && counts[item.key] === 0;
+      const state = active
+        ? 'bg-slate-900 text-white border-slate-900'
+        : (empty
+          ? 'bg-white/50 text-slate-300 border-slate-200 cursor-not-allowed'
+          : 'bg-white/70 text-slate-600 border-slate-200 hover:border-brand-300 hover:text-brand-600');
+      return '<button type="button" data-status="' + escapeHtml(item.key) + '" aria-pressed="' + active + '"' +
+        (empty && !active ? ' disabled' : '') +
+        ' class="home-status-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold border transition-colors ' + state + '">' +
+        (item.dot ? '<span class="w-2 h-2 rounded-full ' + item.dot + '"></span>' : '') +
+        escapeHtml(item.label) +
+        '<span class="' + (active ? 'text-white/70' : 'text-slate-400') + '">' + counts[item.key] + '</span></button>';
+    }).join(''));
+  }
+
+  function renderHomeProjects() {
+    const matches = homeProjects.filter(function (p) {
+      return homeStatus === 'all' || p.status === homeStatus;
+    });
+    $projectsGrid.html(matches.slice(0, HOME_LIMIT).map(getProjectHtml).join(''));
+    $projectsEmpty.toggleClass('hidden', matches.length > 0);
+    renderHomeStatusChips();
+  }
+
+  Core.loadProjects(HOME_MANIFEST)
+    .then(function (projects) {
+      // featured first, then by category priority, then original JSON order
+      homeProjects = projects
+        .map(function (p, i) { return { p: p, i: i }; })
+        .sort(function (a, b) {
+          const fa = a.p.featured ? 0 : 1, fb = b.p.featured ? 0 : 1;
+          if (fa !== fb) return fa - fb;
+          const ca = CATEGORY_PRIORITY[a.p.category], cb = CATEGORY_PRIORITY[b.p.category];
+          const pa = ca === undefined ? 99 : ca, pb = cb === undefined ? 99 : cb;
+          return pa !== pb ? pa - pb : a.i - b.i;
+        })
+        .map(function (x) { return x.p; });
+      renderHomeProjects();
+
+      // Detect languages from each GitHub link and refresh the visible cards
+      Core.enrichLanguages(homeProjects.slice(0, 24), renderHomeProjects);
+    })
+    .catch(function () {
+      $projectsGrid.empty();
+      $statusFilters.empty();
+      $projectsError.removeClass('hidden');
+    });
+
+  $statusFilters.on('click', '.home-status-chip', function () {
+    homeStatus = $(this).attr('data-status') || 'all';
+    renderHomeProjects();
   });
 
   // Render Footer Social Handles (first row only) & current year

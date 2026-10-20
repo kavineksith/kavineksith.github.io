@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; frame-ancestors 'none';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; object-src 'none'; frame-ancestors 'none';"
     />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -222,13 +222,13 @@
               Live <span class="text-gradient">Web Projects</span>
             </h1>
             <p class="text-slate-500">
-              Real-world client sites, dummy/concept landing pages, and personal
-              templates — all deployed and browsable live.
+              Real-world client sites, personal projects, dummy/concept landing
+              pages, and templates — all deployed and browsable live.
             </p>
           </div>
 
           <div
-            class="glass-panel rounded-3xl p-5 md:p-6 mb-10 sticky top-24 z-30"
+            class="glass-panel rounded-3xl p-5 md:p-6 mb-10 lg:sticky lg:top-24 z-30"
           >
             <div class="flex flex-col lg:flex-row gap-4 lg:items-center">
               <div class="relative flex-1">
@@ -241,7 +241,7 @@
                   maxlength="80"
                   autocomplete="off"
                   spellcheck="false"
-                  placeholder="Search web projects by name, tag, or language…"
+                  placeholder="Search web projects by name, tag, status, or language…"
                   class="w-full pl-11 pr-4 py-3 rounded-2xl border border-slate-200 bg-white/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-400 text-sm text-slate-800 placeholder:text-slate-400"
                   aria-label="Search projects"
                 />
@@ -285,6 +285,13 @@
             </div>
           </div>
 
+          <div
+            id="statusChips"
+            class="flex flex-wrap items-center gap-2 mb-6"
+            role="group"
+            aria-label="Filter by project status"
+          ></div>
+
           <div class="flex justify-between items-center mb-6 px-1">
             <p id="resultsCount" class="text-sm text-slate-500">
               Loading projects…
@@ -293,7 +300,7 @@
 
           <div
             id="projectsGrid"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
             aria-live="polite"
           ></div>
 
@@ -337,19 +344,16 @@
     <script>
       window.CATALOG_CONFIG = {
         manifestUrl: "../data/web/manifest.json",
-        categoryLabels: {
-          "real-world": "Real-world Projects",
-          dummy: "Dummy / Concept Projects",
-          personal: "Personal Templates",
-        },
         categoryIcons: {
           "real-world": "fa-solid fa-briefcase",
+          personal: "fa-solid fa-user-gear",
+          templates: "fa-solid fa-id-card",
           dummy: "fa-solid fa-flask",
-          personal: "fa-solid fa-id-card",
         },
         defaultIcon: "fa-solid fa-globe",
       };
     </script>
+    <script src="../assets/js/project-core.js"></script>
     <script src="../assets/js/project-catalog.js"></script>
   </body>
 </html>

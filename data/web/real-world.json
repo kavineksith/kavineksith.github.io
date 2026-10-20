@@ -3,17 +3,18 @@
   "label": "Real-world Projects",
   "projects": [
     {
-      "id": "insophinia-pos",
-      "title": "INSOPHINIA Web Based Point of Sale System",
+      "id": "lucky-bookshop-pos",
+      "title": "Lucky Bookshop POS System",
       "category": "real-world",
       "tags": [
         "POS",
         "Inventory",
         "Retail"
       ],
-      "lang": "JavaScript",
+      "lang": "TypeScript",
+      "status": "ongoing",
       "description": "A comprehensive web-based POS system for retail businesses, featuring inventory management, sales tracking, and customer insights.",
-      "live_preview": "https://insophinia-pos.vercel.app/",
+      "live_preview": "",
       "source_code": ""
     },
     {
@@ -24,7 +25,8 @@
         "Business Site",
         "Stationery"
       ],
-      "lang": "JavaScript",
+      "lang": "TypeScript",
+      "status": "completed",
       "description": "Top-rated book store offering premium stationery, printing, and communication services.",
       "live_preview": "https://lucky-bookshop.netlify.app/",
       "source_code": ""
@@ -38,7 +40,8 @@
         "Fashion",
         "Lifestyle"
       ],
-      "lang": "JavaScript",
+      "lang": "TypeScript",
+      "status": "completed",
       "description": "Beauty, Fashion & Lifestyle brand portfolio including Saloon Navodaa and more.",
       "live_preview": "https://navodaa.netlify.app/",
       "source_code": ""
@@ -51,7 +54,8 @@
         "Audio Equipment",
         "E-commerce"
       ],
-      "lang": "JavaScript",
+      "lang": "TypeScript",
+      "status": "completed",
       "description": "Premium destination for high-fidelity speakers and professional audio equipment.",
       "live_preview": "https://soundupmusicbox.netlify.app/",
       "source_code": ""
@@ -64,7 +68,8 @@
         "Salon",
         "Wellness"
       ],
-      "lang": "JavaScript",
+      "lang": "HTML/CSS/JS",
+      "status": "completed",
       "description": "Professional herbal beauty & wellness salon for women in Gampaha.",
       "live_preview": "https://salonnavodaa.netlify.app/",
       "source_code": ""
@@ -77,7 +82,8 @@
         "Graphic Design",
         "Branding"
       ],
-      "lang": "JavaScript",
+      "lang": "HTML/CSS/JS",
+      "status": "completed",
       "description": "Professional graphic design services including photo editing and branding.",
       "live_preview": "https://dreamartcreation.netlify.app/",
       "source_code": ""
