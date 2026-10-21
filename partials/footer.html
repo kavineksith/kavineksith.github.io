@@ -1,0 +1,96 @@
+<!-- Shared site footer. Loaded into <div id="site-footer"> on every page by assets/js/footer.js.
+     Write links as if from the site root (e.g. #about, pages/projects.html); the loader fixes them for sub-pages.
+     Socials come from data/site/socials.json. -->
+<footer
+  class="bg-slate-50 pt-16 pb-8 border-t border-slate-200 relative z-10"
+>
+  <div class="container mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="flex flex-col items-start">
+        <div class="flex items-center gap-2 mb-6">
+          <div
+            class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-400 to-brand-600 flex items-center justify-center"
+          >
+            <span class="font-serif font-bold text-white text-xl"
+              >KE</span
+            >
+          </div>
+          <span
+            class="font-serif text-xl font-semibold tracking-wide text-slate-900"
+          >
+            Kavin Eksith<span class="text-brand-500">.</span>
+          </span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm">
+          I craft bespoke, high-converting landing pages tailored to boost
+          social media engagement, alongside delivering robust IT
+          automation, data transformation, and cybersecurity consulting.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col items-start md:items-center">
+        <h4
+          class="text-slate-900 font-medium mb-6 uppercase tracking-widest text-sm"
+        >
+          Quick Links
+        </h4>
+        <div class="flex flex-col gap-4">
+          <a
+            href="#technologies"
+            class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+            >Technologies</a
+          >
+          <a
+            href="#projects"
+            class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+            >Projects</a
+          >
+          <a
+            href="pages/projects.html"
+            class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+            >All Projects</a
+          >
+          <a
+            href="#about"
+            class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+            >About</a
+          >
+          <a
+            href="#credentials"
+            class="text-slate-500 hover:text-brand-600 transition-colors text-sm"
+            >Credentials</a
+          >
+        </div>
+      </div>
+
+      <!-- Socials Connect (first row of icons only) -->
+      <div class="flex flex-col items-start md:items-end">
+        <h4
+          class="text-slate-900 font-medium mb-6 uppercase tracking-widest text-sm"
+        >
+          Connect With Me
+        </h4>
+        <div
+          id="footer-socials"
+          class="grid grid-cols-3 gap-3 sm:gap-4 mb-6"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div
+      class="pt-8 border-t border-slate-200 flex flex-col items-center gap-2"
+    >
+      <p class="text-slate-400 text-sm text-center">
+        &copy; <span id="currentYear"></span> Kavin Eksith. All rights
+        reserved.
+      </p>
+      <p class="text-slate-400 text-sm text-center">
+        Designed with <span class="text-brand-500">&hearts;</span> for
+        excellence.
+      </p>
+    </div>
+  </div>
+</footer>

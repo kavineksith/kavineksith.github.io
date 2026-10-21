@@ -1,0 +1,117 @@
+{
+  "$comment": "Technical Skills & Capabilities on index.html (About section). Categories render in order, as two balanced columns. Each category has a title and a list of skills shown comma-separated.",
+  "categories": [
+    {
+      "id": "systems",
+      "title": "Systems & Infrastructure",
+      "items": [
+        "Windows/Linux Administration",
+        "Windows Server",
+        "ADDS & GPO Management",
+        "VMware",
+        "Hyper-V",
+        "VirtualBox",
+        "System Monitoring & Troubleshooting",
+        "Configuration Management",
+        "Anti-Virus Software Management"
+      ]
+    },
+    {
+      "id": "networking",
+      "title": "Networking",
+      "items": [
+        "CCNA-Level Networking",
+        "TCP/IP",
+        "DNS",
+        "DHCP",
+        "VPN",
+        "VLAN",
+        "NAT",
+        "Network Configuration",
+        "Network Security",
+        "Cisco Packet Tracer"
+      ]
+    },
+    {
+      "id": "cybersecurity",
+      "title": "Cybersecurity",
+      "items": [
+        "Web Application Security",
+        "API Security & Testing",
+        "Penetration Testing Tools Dev",
+        "Vulnerability Assessments",
+        "Network Security",
+        "QA Vulnerability Assessment"
+      ]
+    },
+    {
+      "id": "programming-web",
+      "title": "Programming & Web Dev",
+      "items": [
+        "Python",
+        "Bash",
+        "PowerShell",
+        "Next.js",
+        "HTML5",
+        "CSS3",
+        "SCSS",
+        "Sass",
+        "Tailwind CSS",
+        "JavaScript",
+        "TypeScript",
+        "jQuery",
+        "Node.js",
+        "Express.js",
+        "Go",
+        "Java",
+        "Spring Boot",
+        "PHP",
+        "REST API Design & Security",
+        "JUnit",
+        "Unit & Integration Testing"
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "Database Technologies",
+      "items": [
+        "MySQL",
+        "SQLite3",
+        "PostgreSQL",
+        "Supabase",
+        "Microsoft SQL Server",
+        "Database Design & Normalization",
+        "Query Optimization",
+        "Stored Procedures",
+        "phpMyAdmin",
+        "YAML",
+        "XML"
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools & Productivity",
+      "items": [
+        "VS Code",
+        "IntelliJ IDEA",
+        "WebStorm",
+        "Postman",
+        "Swagger UI",
+        "Figma",
+        "Canva",
+        "Jira",
+        "Google Analytics",
+        "Git",
+        "GitHub",
+        "GitHub Actions",
+        "GitHub Codespaces",
+        "Version Control",
+        "Docker",
+        "CI/CD Pipeline Fundamentals",
+        "Microsoft Office",
+        "Google Workspace",
+        "LibreOffice"
+      ]
+    }
+  ]
+}

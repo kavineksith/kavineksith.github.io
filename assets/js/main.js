@@ -12,44 +12,7 @@ $(function () {
       name: "Kavin Eksith | Portfolio",
       person: "Kavin Eksith",
       since: "May 2025"
-    },
-    socials: [
-      {
-        platform: "LinkedIn",
-        icon: "fa-brands fa-linkedin",
-        url: "https://linkedin.com/in/kavin-eksith"
-      },
-      {
-        platform: "GitHub",
-        icon: "fa-brands fa-github",
-        url: "https://github.com/kavineksith"
-      },
-      {
-        platform: "Portfolio",
-        icon: "fa-solid fa-globe",
-        url: "https://kavineksith.github.io"
-      },
-      {
-        platform: "Medium",
-        icon: "fa-brands fa-medium",
-        url: "https://kavineksith.medium.com"
-      },
-      {
-        platform: "freeCodeCamp",
-        icon: "fa-brands fa-free-code-camp",
-        url: "https://www.freecodecamp.org/kavin-eksith"
-      },
-      {
-        platform: "CodePen",
-        icon: "fa-brands fa-codepen",
-        url: "https://codepen.io/kavineksith"
-      },
-      {
-        platform: "Frontend Mentor",
-        icon: "fa-solid fa-code",
-        url: "https://www.frontendmentor.io/profile/kavineksith"
-      },
-    ]
+    }
   };
 
   const GRADIENTS = [
@@ -71,21 +34,37 @@ $(function () {
 
   // ----------------------------------------------------------------
   // PROJECTS — read from data/web/*.json (same source as the catalog pages)
-  // Shows up to HOME_LIMIT projects; status chips filter the whole set.
+  // Shows HOME_PAGE_SIZE projects at a time ("Show more" reveals the rest); status chips count and filter ALL divisions.
   // ----------------------------------------------------------------
   const Core = window.ProjectCore;
   const escapeHtml = Core.escapeHtml;
   const sanitizeUrl = function (u) { return Core.sanitizeUrl(u) || '#'; };
 
-  const HOME_MANIFEST = 'data/web/manifest.json';
-  const HOME_LIMIT = 6;
+  // Every division feeds the homepage chips & grid. Remove a line to hide a division.
+  const HOME_MANIFESTS = [
+    'data/web/manifest.json',
+    'data/cli/manifest.json',
+    'data/github/manifest.json',
+    'data/portfolio/manifest.json'
+  ];
+  const HOME_PAGE_SIZE = 6; // cards shown first, and added per "Show more" click
   // Lower number = shown first on the homepage (unlisted categories go last)
   const CATEGORY_PRIORITY = { 'real-world': 0, personal: 1, templates: 2, dummy: 3 };
   const CATEGORY_ICONS = {
     'real-world': 'fa-solid fa-briefcase',
     personal: 'fa-solid fa-user-gear',
     templates: 'fa-solid fa-id-card',
-    dummy: 'fa-solid fa-flask'
+    dummy: 'fa-solid fa-flask',
+    networking: 'fa-solid fa-network-wired',
+    sysadmin: 'fa-solid fa-server',
+    privacy: 'fa-solid fa-user-shield',
+    'task-management': 'fa-solid fa-list-check',
+    'it-support': 'fa-solid fa-toolbox',
+    'java-spring': 'fa-solid fa-leaf',
+    'testing-qa': 'fa-solid fa-vial',
+    'static-site': 'fa-solid fa-file-code',
+    misc: 'fa-solid fa-code-branch',
+    portfolio: 'fa-solid fa-star'
   };
 
   const $projectsGrid = $('#projects-grid');
@@ -95,6 +74,10 @@ $(function () {
 
   let homeProjects = [];
   let homeStatus = 'all';
+  let homeShown = HOME_PAGE_SIZE;
+  const $projectsMore = $('#home-projects-more');
+  const $projectsCount = $('#home-projects-count');
+  const $moreBtn = $('#home-projects-toggle');
 
   function getProjectHtml(project, index) {
     const gradient = GRADIENTS[index % GRADIENTS.length];
@@ -121,12 +104,15 @@ $(function () {
           <div class="w-12 h-1 bg-white/60 rounded-full group-hover:bg-white/90 transition-colors"></div>
         </div>
         <!-- Frosted glass text panel -->
-        <div class="absolute bottom-0 left-0 right-0 p-6 bg-white/70 backdrop-blur-md border-t border-white/60 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-          <span class="text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block">${category}${langs ? ' &middot; ' + langs : ''}</span>
-          <h3 class="text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight line-clamp-2">${title}</h3>
-          <p class="text-slate-600 text-xs line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            ${description}
-          </p>
+        <!-- Fixed height: the panel's top edge lines up on every card, whatever the title/description length -->
+        <div class="absolute bottom-0 left-0 right-0 h-[8.5rem] p-6 flex flex-col overflow-hidden bg-white/70 backdrop-blur-md border-t border-white/60 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+          <span class="shrink-0 text-brand-700 text-xs font-semibold tracking-widest uppercase mb-1 block truncate">${category}${langs ? ' &middot; ' + langs : ''}</span>
+          <h3 class="shrink-0 text-lg md:text-xl font-serif font-bold text-slate-900 mb-1 leading-tight line-clamp-2" title="${title}">${title}</h3>
+          <div class="min-h-0 flex-1 overflow-hidden">
+            <p class="text-slate-600 text-xs line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              ${description}
+            </p>
+          </div>
         </div>
       </a>
     `;
@@ -164,12 +150,32 @@ $(function () {
     const matches = homeProjects.filter(function (p) {
       return homeStatus === 'all' || p.status === homeStatus;
     });
-    $projectsGrid.html(matches.slice(0, HOME_LIMIT).map(getProjectHtml).join(''));
+    const visible = matches.slice(0, homeShown);
+    const remaining = matches.length - visible.length;
+    $projectsGrid.html(visible.map(getProjectHtml).join(''));
     $projectsEmpty.toggleClass('hidden', matches.length > 0);
+
+    // "Showing x of y" + Show more / Show less (hidden when everything fits)
+    $projectsMore.toggleClass('hidden', matches.length <= HOME_PAGE_SIZE);
+    $projectsCount.text('Showing ' + visible.length + ' of ' + matches.length + ' project' + (matches.length === 1 ? '' : 's'));
+    $moreBtn.html(remaining > 0
+      ? 'Show ' + Math.min(HOME_PAGE_SIZE, remaining) + ' more <i class="fa-solid fa-chevron-down text-xs"></i>'
+      : 'Show less <i class="fa-solid fa-chevron-up text-xs"></i>');
+    $moreBtn.attr('data-mode', remaining > 0 ? 'more' : 'less');
     renderHomeStatusChips();
   }
 
-  Core.loadProjects(HOME_MANIFEST)
+  Promise.all(HOME_MANIFESTS.map(function (url) {
+    return Core.loadProjects(url).catch(function (err) {
+      console.error('Could not load ' + url, err);
+      return null;
+    });
+  }))
+    .then(function (lists) {
+      const loaded = lists.filter(Boolean);
+      if (!loaded.length) throw new Error('No project manifest could be loaded');
+      return [].concat.apply([], loaded);
+    })
     .then(function (projects) {
       // featured first, then by category priority, then original JSON order
       homeProjects = projects
@@ -195,25 +201,33 @@ $(function () {
 
   $statusFilters.on('click', '.home-status-chip', function () {
     homeStatus = $(this).attr('data-status') || 'all';
+    homeShown = HOME_PAGE_SIZE;
     renderHomeProjects();
   });
 
-  // Render Footer Social Handles (first row only) & current year
-  const $footerSocials = $('#footer-socials');
-  siteData.socials.slice(0, 3).forEach(function (social) {
-    const handleHtml = `
-      <a href="${sanitizeUrl(social.url)}" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors shadow-sm" aria-label="${escapeHtml(social.platform)}">
-        <i class="${escapeHtml(social.icon)}"></i>
-      </a>
-    `;
-    $footerSocials.append(handleHtml);
+  $moreBtn.on('click', function () {
+    if ($(this).attr('data-mode') === 'more') {
+      homeShown += HOME_PAGE_SIZE;
+      renderHomeProjects();
+    } else {
+      homeShown = HOME_PAGE_SIZE;
+      renderHomeProjects();
+      const section = document.getElementById('projects');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
-  $('#currentYear').text(new Date().getFullYear());
 
-  // Render "Let's Connect" social grid (same source list as footer)
+  // Render "Let's Connect" social grid from data/site/socials.json
+  // (the footer reads the same file — see assets/js/footer.js)
   const $connectSocialsGrid = $('#connect-socials-grid');
-  siteData.socials.forEach(function (social) {
-    const cardHtml = `
+  window.fetch('data/site/socials.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      (Array.isArray(data.socials) ? data.socials : []).forEach(function (social) {
+        const cardHtml = `
       <a href="${sanitizeUrl(social.url)}" target="_blank" rel="noopener noreferrer"
         class="glass-panel rounded-2xl p-6 flex flex-col items-center text-center gap-4 border-t border-brand-500/20 hover:border-brand-500/50 hover:-translate-y-1 transition-all duration-300 group">
         <div class="w-14 h-14 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 text-2xl group-hover:scale-110 group-hover:bg-brand-100 transition-all duration-500">
@@ -222,8 +236,10 @@ $(function () {
         <span class="text-slate-900 font-medium text-sm tracking-wide">${escapeHtml(social.platform)}</span>
       </a>
     `;
-    $connectSocialsGrid.append(cardHtml);
-  });
+        $connectSocialsGrid.append(cardHtml);
+      });
+    })
+    .catch(function (err) { console.error('Could not load socials:', err); });
 
 
   // ==========================================
@@ -344,8 +360,8 @@ $(function () {
 
 
   // ==========================================
-  // DATA-DRIVEN SECTIONS: TECHNOLOGIES & CREDENTIALS
-  // Content lives in data/site/technologies.json and data/site/credentials.json
+  // DATA-DRIVEN SECTIONS: SKILLS, TECHNOLOGIES & CREDENTIALS
+  // Content lives in data/site/skills.json, technologies.json and credentials.json
   // ==========================================
   const TAB_ACTIVE = 'active bg-gradient-to-r from-brand-500 to-brand-700 text-white shadow-md';
   const TAB_IDLE = 'text-slate-500 hover:text-slate-900';
@@ -388,6 +404,15 @@ $(function () {
     $grid.html(html.join(''));
   }
 
+  // ---- About sidebar: strengths chips ----
+  function renderAbout(data) {
+    const strengths = Array.isArray(data && data.strengths) ? data.strengths : [];
+    $('#about-strengths').html(strengths.map(function (text) {
+      return '<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 border border-brand-100 text-xs font-medium">' +
+        '<i class="fa-solid fa-check text-[10px] text-brand-500"></i>' + escapeHtml(text) + '</span>';
+    }).join(''));
+  }
+
   // ---- Credentials: tabs + panes, academic history, languages ----
   function renderCredentialTabs(tabs) {
     const $tabs = $('#cred-tabs');
@@ -412,13 +437,80 @@ $(function () {
       }).join('');
       paneHtml.push(
         '<div id="' + id + '" role="tabpanel" class="cred-content-pane space-y-4' + (first ? '' : ' hidden') + '">' +
-          '<h4 class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2">' + escapeHtml(tab.heading || tab.label) + '</h4>' +
+          '<h4 class="text-lg font-serif font-bold text-brand-600 border-b border-slate-200 pb-2">' + escapeHtml(tab.heading || tab.label) +
+            (tab.note ? ' <span class="block sm:inline sm:ml-2 text-xs font-sans font-medium text-slate-400">' + escapeHtml(tab.note) + '</span>' : '') +
+          '</h4>' +
           '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600 text-sm">' + items + '</div>' +
         '</div>'
       );
     });
     $tabs.html(btnHtml.join(''));
     $contents.html(paneHtml.join(''));
+    updateTabFades();
+  }
+
+  // ---- Skills (About section) ----
+  function renderSkills(data) {
+    const $grid = $('#skills-grid');
+    const cats = (Array.isArray(data && data.categories) ? data.categories : []).filter(function (c) {
+      return c && c.title && Array.isArray(c.items) && c.items.length;
+    });
+    if (!cats.length) { showSectionError($grid, 'No skills to show yet.'); return; }
+    $grid.html(cats.map(function (c, i) {
+      const last = i === cats.length - 1;
+      return '<div class="break-inside-avoid' + (last ? '' : ' mb-4') + '" data-category="' + escapeHtml(slug(c.id || c.title)) + '">' +
+        '<h5 class="text-brand-600 font-semibold mb-2 text-sm uppercase tracking-wider">' + escapeHtml(c.title) + '</h5>' +
+        '<p class="text-slate-600 text-xs leading-relaxed">' + c.items.map(escapeHtml).join(', ') + '</p>' +
+      '</div>';
+    }).join(''));
+  }
+
+  // ---- Credential tab bar: drag-to-scroll (mouse) + edge fades ----
+  // Touch devices scroll natively; this gives desktop the same swipe feel.
+  const credTabsEl = document.getElementById('cred-tabs');
+
+  function updateTabFades() {
+    if (!credTabsEl) return;
+    const max = credTabsEl.scrollWidth - credTabsEl.clientWidth;
+    credTabsEl.classList.toggle('fade-left', credTabsEl.scrollLeft > 2);
+    credTabsEl.classList.toggle('fade-right', max > 2 && credTabsEl.scrollLeft < max - 2);
+  }
+
+  if (credTabsEl) {
+    let dragging = false, moved = false, startX = 0, startLeft = 0;
+
+    credTabsEl.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      dragging = true; moved = false;
+      startX = e.clientX; startLeft = credTabsEl.scrollLeft;
+    });
+
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) {
+        moved = true;
+        credTabsEl.classList.add('is-dragging');
+      }
+      if (moved) credTabsEl.scrollLeft = startLeft - dx;
+    });
+
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      credTabsEl.classList.remove('is-dragging');
+      if (moved) {
+        // A drag must not count as a tab click
+        const swallow = function (ev) { ev.stopPropagation(); ev.preventDefault(); };
+        credTabsEl.addEventListener('click', swallow, true);
+        setTimeout(function () { credTabsEl.removeEventListener('click', swallow, true); }, 0);
+      }
+    }
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    credTabsEl.addEventListener('scroll', updateTabFades, { passive: true });
+    window.addEventListener('resize', updateTabFades);
   }
 
   function renderAcademic(list) {
@@ -451,7 +543,19 @@ $(function () {
     $btn.removeClass(TAB_IDLE).addClass(TAB_ACTIVE).attr('aria-selected', 'true');
     $('.cred-content-pane').addClass('hidden');
     $('#' + slug($btn.attr('data-target'))).removeClass('hidden');
+    if (this.scrollIntoView) this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
   });
+
+  loadSiteJson('data/site/about.json')
+    .then(renderAbout)
+    .catch(function (err) { console.error('Could not load about data:', err); });
+
+  loadSiteJson('data/site/skills.json')
+    .then(renderSkills)
+    .catch(function (err) {
+      console.error('Could not load skills:', err);
+      showSectionError($('#skills-grid'), 'Skills could not be loaded right now.');
+    });
 
   loadSiteJson('data/site/technologies.json')
     .then(renderTechnologies)

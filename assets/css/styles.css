@@ -73,6 +73,36 @@ body {
   color: transparent;
 }
 
+/* Text selection — dark brand blue with white text (contrast ≈ 10:1), so
+   highlighted text stays readable on both light and dark surfaces. */
+::selection {
+  background: var(--brand-800);
+  color: #fff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--brand-800);
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Gradient text is transparent, so it needs its own selection colours:
+   pale blue with dark text stays legible even where the engine ignores
+   -webkit-text-fill-color inside ::selection. */
+.text-gradient::selection,
+.text-gradient *::selection {
+  background: var(--brand-100);
+  color: var(--brand-800);
+  -webkit-text-fill-color: var(--brand-800);
+}
+
+.text-gradient::-moz-selection,
+.text-gradient *::-moz-selection {
+  background: var(--brand-100);
+  color: var(--brand-800);
+}
+
 /* Liquid Glass Panel — shared across cards, tabs, modals, mobile menu */
 .glass-panel {
   position: relative;
@@ -249,4 +279,64 @@ header nav a:hover, header nav a.active {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-}/*# sourceMappingURL=styles.css.map */
+}
+/* Credentials tab bar — single row that scrolls sideways (touch swipe or
+   mouse drag, see main.js). Scrollbar hidden; edge fades appear only when
+   there is more content in that direction. */
+.cred-tabs-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  --fade-left: 0px;
+  --fade-right: 0px;
+}
+
+.cred-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cred-tabs-scroll > * {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Auto margins centre the tabs when they fit, and fall back to a normal
+   left-aligned scroll when they overflow (justify-center would clip the
+   first tab). */
+.cred-tabs-scroll > :first-child {
+  margin-left: auto;
+}
+
+.cred-tabs-scroll > :last-child {
+  margin-right: auto;
+}
+
+.cred-tabs-scroll.is-dragging {
+  cursor: grabbing;
+}
+
+.cred-tabs-scroll.is-dragging > * {
+  pointer-events: none;
+}
+
+.cred-tabs-scroll.fade-left,
+.cred-tabs-scroll.fade-right {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent 100%);
+}
+
+.cred-tabs-scroll.fade-left {
+  --fade-left: 2rem;
+}
+
+.cred-tabs-scroll.fade-right {
+  --fade-right: 2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

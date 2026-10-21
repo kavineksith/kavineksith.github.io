@@ -1,0 +1,41 @@
+{
+  "$comment": "Social links used by the 'Let's Connect' grid (all) and the shared footer (first 'footerLimit' entries). Icons are Font Awesome classes.",
+  "footerLimit": 3,
+  "socials": [
+    {
+      "platform": "LinkedIn",
+      "icon": "fa-brands fa-linkedin",
+      "url": "https://linkedin.com/in/kavin-eksith"
+    },
+    {
+      "platform": "GitHub",
+      "icon": "fa-brands fa-github",
+      "url": "https://github.com/kavineksith"
+    },
+    {
+      "platform": "Portfolio",
+      "icon": "fa-solid fa-globe",
+      "url": "https://kavineksith.github.io"
+    },
+    {
+      "platform": "Medium",
+      "icon": "fa-brands fa-medium",
+      "url": "https://kavineksith.medium.com"
+    },
+    {
+      "platform": "freeCodeCamp",
+      "icon": "fa-brands fa-free-code-camp",
+      "url": "https://www.freecodecamp.org/kavin-eksith"
+    },
+    {
+      "platform": "CodePen",
+      "icon": "fa-brands fa-codepen",
+      "url": "https://codepen.io/kavineksith"
+    },
+    {
+      "platform": "Frontend Mentor",
+      "icon": "fa-solid fa-code",
+      "url": "https://www.frontendmentor.io/profile/kavineksith"
+    }
+  ]
+}

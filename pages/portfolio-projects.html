@@ -81,7 +81,7 @@
   </head>
 
   <body
-    class="font-sans antialiased bg-slate-50 text-slate-900 selection:bg-brand-500/30 selection:text-brand-200 min-h-screen relative overflow-x-hidden"
+    class="font-sans antialiased bg-slate-50 text-slate-900 min-h-screen relative overflow-x-hidden"
   >
     <div
       class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-br from-blue-100/50 via-slate-50 to-sky-50/50"
@@ -325,20 +325,11 @@
         </div>
       </main>
 
-      <footer
-        class="bg-slate-50 pt-16 pb-8 border-t border-slate-200 relative z-10"
-      >
-        <div class="container mx-auto px-6 md:px-12">
-          <div
-            class="pt-8 border-t border-slate-200 flex flex-col items-center gap-2"
-          >
-            <p class="text-slate-400 text-sm text-center">
-              &copy; <span id="currentYear"></span> Kavin Eksith. All rights
-              reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <div id="site-footer" data-root="../">
+        <noscript>
+          <p class="text-center text-slate-400 text-sm py-8">&copy; Kavin Eksith. All rights reserved.</p>
+        </noscript>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -353,5 +344,6 @@
     </script>
     <script src="../assets/js/project-core.js"></script>
     <script src="../assets/js/project-catalog.js"></script>
+    <script src="../assets/js/footer.js" defer></script>
   </body>
 </html>

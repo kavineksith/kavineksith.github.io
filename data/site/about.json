@@ -1,0 +1,12 @@
+{
+  "$comment": "About section sidebar (under the profile card): strengths shown as chips. The call-to-action card below it stretches to fill the remaining column height.",
+  "strengths": [
+    "Problem Solving",
+    "Critical Thinking",
+    "Communication",
+    "Attention to Detail",
+    "Adaptability",
+    "Time Management",
+    "Continuous Learning"
+  ]
+}

@@ -17,10 +17,14 @@ A premium, light "liquid glass" themed personal portfolio showcasing full-stack 
   - **GitHub Projects** — Java/Spring Boot services, testing & QA demos, static sites, and other repositories without a live deployment
   - **Portfolio Projects** — featured work with role, year, tech stack and highlights (`pages/portfolio-projects.html`, `data/portfolio/`)
 - **Search & filter** on every catalog page — filter by category, language, and live-preview/source-code availability, with input validation and XSS-safe rendering
-- **JSON-driven content** — each division's projects, the technology grid, and the credentials section all live in JSON files under `data/`, loaded at runtime (no HTML edits to update them)
+- **JSON-driven content** — each division's projects, the technology grid, technical skills, and the credentials section all live in JSON files under `data/`, loaded at runtime (no HTML edits to update them)
 - **Technology grid** with hover-animated, liquid-glass tech icons — JSON-driven (`data/site/technologies.json`)
-- **Credentials & certifications** section with tabbed categories, academic history and languages — JSON-driven (`data/site/credentials.json`)
-- **Connect section** — social links (LinkedIn, GitHub, Portfolio, Medium) rendered as glass cards, with the first row mirrored in the footer
+- **Technical Skills & Capabilities** and **Professional Experience** in the About section — skills are JSON-driven (`data/site/skills.json`)
+- **Credentials & certifications** section with 5 swipe/drag-scrollable tabs (touch swipe on mobile, click-and-drag with the mouse), academic history and languages — JSON-driven (`data/site/credentials.json`)
+- **Readable text selection** — dark brand-blue highlight with white text (≈10:1 contrast) across all pages
+- **Connect section** — social links rendered as glass cards from `data/site/socials.json`, with the first few mirrored in the footer
+- **One shared footer on every page** — `partials/footer.html` is loaded into the homepage and all `pages/*.html` by `assets/js/footer.js`, so it is edited in a single place
+- **About sidebar** — profile card, core-strengths chips (`data/site/about.json`) and a call-to-action card that stretches so both columns end level
 - **Home button & consistent navigation** across every page, with a responsive navbar that adapts cleanly from mobile through shrunk desktop windows up to full width
 - **Scroll-reveal animations** and sticky header with scroll-aware styling
 - **Security-hardened by default** — ships with `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy` meta tags
@@ -39,19 +43,22 @@ A premium, light "liquid glass" themed personal portfolio showcasing full-stack 
 │   ├── github-projects.html         # Division 3: GitHub-only repositories (searchable/filterable)
 │   └── portfolio-projects.html      # Division 4: featured portfolio projects (searchable/filterable)
 ├── data/                          # JSON data consumed by the homepage and catalog pages
-│   ├── site/                        # technologies.json (tech grid), credentials.json (certs, education, languages)
+│   ├── site/                        # technologies.json, skills.json, credentials.json, about.json (strength chips), socials.json (social links)
 │   ├── web/                         # real-world.json, personal.json, templates.json, dummy.json, manifest.json
 │   ├── portfolio/                   # portfolio.json, manifest.json
 │   ├── cli/                         # networking.json, sysadmin.json, privacy.json,
 │   │                                 # task-management.json, it-support.json, manifest.json
 │   └── github/                      # java-spring.json, testing-qa.json, static-site.json,
 │                                     # misc.json, manifest.json
+├── partials/
+│   └── footer.html                # Shared footer, injected on every page by assets/js/footer.js
 ├── assets/
 │   ├── css/styles.css             # Compiled CSS (sass assets/scss/styles.scss assets/css/styles.css)
 │   ├── scss/styles.scss           # Source SCSS
 │   └── js/
 │       ├── main.js                  # Homepage interactivity: nav, reveal animations, canvas
-│       │                             # background, dynamic project/social/technology/credentials rendering
+│       │                             # background, dynamic project/social/technology/skills/credentials rendering
+│       ├── footer.js                # Loads partials/footer.html + socials into <div id="site-footer"> on every page
 │       ├── project-core.js          # Shared: JSON loading, status model, GitHub language detection
 │       └── project-catalog.js       # Shared search/filter/render logic for all pages/*.html
 ├── scripts/update_languages.py    # Optional: bake GitHub languages into the JSON files
@@ -152,7 +159,8 @@ Everything on the homepage and the catalog pages comes from `data/**/*.json`. Ad
 - **Languages** — read from the `source_code` GitHub link (top languages, ≥5% of the repo). `lang` is only a fallback when there is no GitHub link or the API is unavailable.
 - **Optional fields** — `icon` (Font Awesome class), `featured: true` (pins to the top of the homepage), `languages` (manual override). Portfolio entries also support `year`, `role`, `stack[]` and `highlights[]`.
 - **New category file?** Create `data/<division>/<name>.json` and list it in that division's `manifest.json`. Empty files are fine.
-- The homepage shows up to 6 projects from `data/web/` (featured first, then real-world → personal → templates → dummy) and its status chips filter the whole set.
+- The homepage reads **all four divisions** (`data/web`, `data/cli`, `data/github`, `data/portfolio`): the status chips count and filter every project, 6 cards show first (featured first, then real-world → personal → templates → dummy → other divisions) and **Show more** reveals 6 at a time. To limit the homepage to some divisions, edit `HOME_MANIFESTS` at the top of the projects block in `assets/js/main.js`; `HOME_PAGE_SIZE` sets the page size.
+- Homepage card text panels have a fixed height, so card edges line up whatever the title or description length (long titles clamp to 2 lines).
 
 ### Language detection & GitHub rate limits
 
@@ -164,13 +172,14 @@ GITHUB_TOKEN=ghp_xxx python3 scripts/update_languages.py
 
 Projects with a baked `languages` array are never fetched at runtime.
 
-## 🧩 Managing Technologies & Credentials
+## 🧩 Managing Technologies, Skills & Credentials
 
-The **Technologies** grid and the **Credentials** section on `index.html` are rendered from two JSON files in `data/site/`. To update either one, edit the JSON only — `index.html` just contains empty containers (`#tech-grid`, `#cred-tabs`, `#cred-tab-contents`, `#academic-list`, `#languages-list`) that `assets/js/main.js` fills in on page load.
+The **Technologies** grid, the **Technical Skills & Capabilities** block and the **Credentials** section on `index.html` are rendered from three JSON files in `data/site/`. To update any of them, edit the JSON only — `index.html` just contains empty containers (`#tech-grid`, `#skills-grid`, `#cred-tabs`, `#cred-tab-contents`, `#academic-list`, `#languages-list`) that `assets/js/main.js` fills in on page load.
 
 | What you're changing | File |
 | --- | --- |
 | Technology icons in the grid | `data/site/technologies.json` |
+| Technical Skills & Capabilities | `data/site/skills.json` |
 | Certifications, academic history, languages | `data/site/credentials.json` |
 
 ### `data/site/technologies.json`
@@ -193,6 +202,24 @@ The **Technologies** grid and the **Credentials** section on `index.html` are re
 - **`name`** — shown as the hover tooltip and the image `alt` text.
 - **`icon`** — the [skillicons.dev](https://skillicons.dev) icon ID (e.g. `py`, `js`, `docker`, `githubactions`). Only letters, numbers, `-` and `_` are accepted.
 - **Add a technology:** append `{ "name": "...", "icon": "..." }` to the right group's `items`. **Add a group:** add a new object with `id`, `label` and `items`.
+
+### `data/site/skills.json`
+
+```json
+{
+  "categories": [
+    {
+      "id": "networking",
+      "title": "Networking",
+      "items": ["CCNA-Level Networking", "TCP/IP", "DNS"]
+    }
+  ]
+}
+```
+
+- Categories render in file order and flow into two balanced columns on desktop (one column on mobile).
+- **`title`** is the heading; **`items`** are shown comma-separated, so write each skill as its own string (commas inside a skill name would look like two skills).
+- **Add a skill:** append a string to a category's `items`. **Add a category:** add a new object with `id`, `title` and `items`.
 
 ### `data/site/credentials.json`
 
@@ -220,9 +247,9 @@ The **Technologies** grid and the **Credentials** section on `index.html` are re
 }
 ```
 
-- **`tabs`** — one object per certification tab, shown in file order; the first tab is active by default.
+- **`tabs`** — one object per certification tab, shown in file order; the first tab is active by default. The tab bar is a single row: when the tabs don't fit the screen it scrolls sideways (swipe on touch devices, click-and-drag with a mouse, scrollbar hidden) and soft edge fades show which side has more. Adding or removing a tab needs no code change.
   - `id` — unique slug (letters, numbers, `-`, `_`), used to link the tab button to its panel.
-  - `label` — text on the tab button. `heading` — title inside the panel (falls back to `label`).
+  - `label` — text on the tab button. `heading` — title inside the panel (falls back to `label`). `note` *(optional)* — small line shown next to the heading (e.g. `"Completed May – June 2026"`).
   - `items` — plain-text certification names, one per line item. Add a new certification by appending a string.
 - **`academic`** — `title`, `institution`, `period` are shown on every entry; `grade` is optional and renders as a badge.
 - **`languages`** — `name` and `proficiency`.
@@ -233,3 +260,11 @@ The **Technologies** grid and the **Credentials** section on `index.html` are re
 - The JSON is loaded with `fetch`, so test locally through `python3 -m http.server`, not `file://`.
 - If a file is missing or invalid JSON, that section shows a short "could not be loaded" message and the error is logged to the browser console.
 - Validate edits quickly with `python3 -m json.tool data/site/technologies.json` (and the same for `credentials.json`).
+- Experience entries in the About section are still plain HTML in `index.html` (`Professional Experience` block).
+- Text-selection colours are defined in `assets/scss/styles.scss` (`::selection`) — recompile with `sass assets/scss/styles.scss assets/css/styles.css` after changing them.
+
+### `data/site/socials.json`, `data/site/about.json` and the shared footer
+
+- **`socials.json`** — `socials` is a list of `{ platform, icon, url }` (icon = Font Awesome class). All entries appear in the Connect section; the first `footerLimit` entries (default 3) also appear in the footer.
+- **`about.json`** — `strengths` is a list of strings shown as chips in the About sidebar.
+- **Footer** — edit `partials/footer.html` once and every page updates. Write its links as if from the site root (`#about`, `pages/projects.html`); `footer.js` re-bases them automatically on pages in `pages/` (`../index.html#about`, …). A new page just needs `<div id="site-footer" data-root="../"></div>` (use `data-root=""` at the site root) and `<script src="../assets/js/footer.js" defer></script>`.
