@@ -4,31 +4,131 @@
   "projects": [
     {
       "id": "insophinia-pos",
-      "title": "INSOPHINIA Web Based Point of Sale System",
+      "title": "INSOPHINIA POS — Next.js Edition",
       "category": "portfolio",
       "tags": [
         "POS",
         "Retail",
-        "PWA"
+        "Next.js",
+        "Self-Hosted"
       ],
       "lang": "TypeScript",
-      "status": "ongoing",
+      "status": "completed",
       "icon": "fa-solid fa-cash-register",
-      "year": "2025",
-      "role": "Full-Stack Developer",
       "stack": [
         "Next.js",
         "TypeScript",
-        "SCSS",
-        "Supabase"
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "JWT",
+        "Docker"
       ],
       "highlights": [
-        "Inventory management and sales tracking",
-        "Customer insights for retail businesses",
-        "PWA point-of-sale implementation with REST API design"
+        "Billing, receipt printing, returns and cancellation workflows with barcode/PLU lookup, loyalty points and quantity-based promotions",
+        "Role-based access, audit/security events and optional two-factor authentication, with a live dual-screen customer display",
+        "AES-256-GCM encrypted backups with seven-day retention and configurable local or S3-compatible cloud fallback"
       ],
-      "description": "A comprehensive web-based POS system for retail businesses, featuring inventory management, sales tracking, and customer insights.",
+      "description": "A self-hosted point-of-sale application for retail shops: billing, inventory, customers and loyalty, manual email and WhatsApp receipts, and encrypted backups — deployable on a local workstation, self-hosted containers or Supabase.",
       "live_preview": "https://insophinia-pos.vercel.app/",
+      "source_code": ""
+    },
+    {
+      "id": "insophinia-pos-react-spring",
+      "title": "INSOPHINIA POS — React + Spring Boot + Desktop Edition",
+      "category": "portfolio",
+      "tags": [
+        "POS",
+        "Retail",
+        "REST API",
+        "Desktop",
+        "Self-Hosted"
+      ],
+      "lang": "Java",
+      "status": "completed",
+      "icon": "fa-solid fa-cash-register",
+      "stack": [
+        "React",
+        "Vite",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "Spring Boot",
+        "JavaFX",
+        "MySQL",
+        "Flyway",
+        "Testcontainers",
+        "Docker"
+      ],
+      "highlights": [
+        "One Spring Boot REST API and MySQL 8 database shared by a React/Vite web client and a JavaFX desktop client",
+        "Email verification and TOTP two-factor authentication lifecycles, role-aware dashboard, and PDF/CSV/JSON report exports",
+        "Billing concurrency integration tests on Testcontainers MySQL, plus Vitest and Cypress end-to-end coverage"
+      ],
+      "description": "A multi-client point-of-sale system where the web and desktop apps talk to a single Spring Boot REST API that alone owns the MySQL database, with Flyway migrations, dev/test/prod profiles and a Docker-ready backend.",
+      "live_preview": "",
+      "source_code": ""
+    },
+    {
+      "id": "insophinia-pos-php",
+      "title": "INSOPHINIA POS — PHP + MySQL Edition",
+      "category": "portfolio",
+      "tags": [
+        "POS",
+        "Retail",
+        "PHP",
+        "Self-Hosted"
+      ],
+      "lang": "PHP",
+      "status": "completed",
+      "icon": "fa-solid fa-cash-register",
+      "stack": [
+        "PHP",
+        "MySQL",
+        "Bootstrap",
+        "jQuery",
+        "mPDF",
+        "PHPMailer",
+        "JWT",
+        "Docker"
+      ],
+      "highlights": [
+        "Framework-free PHP 8.2 port with a custom router, 38 JSON API endpoints and a fully offline-bundled Bootstrap UI",
+        "JWT sessions with token blacklist, CSRF protection, rate limiting, account lockout, audit logging and 4-role × 33-permission RBAC",
+        "Atomic stock updates, A4/thermal PDF receipts, email and WhatsApp sharing, and one-command Docker/Podman setup"
+      ],
+      "description": "A pure PHP and MySQL point-of-sale system covering billing, inventory, customers, warranties, repairs and marketing campaigns, with a security model matching the original Next.js edition and simple deployment via Docker, Podman, Apache or Nginx.",
+      "live_preview": "",
+      "source_code": ""
+    },
+    {
+      "id": "pentest-report-generator",
+      "title": "Pentest Report Generator",
+      "category": "portfolio",
+      "tags": [
+        "Pentesting",
+        "Reporting",
+        "CVSS",
+        "Self-Hosted"
+      ],
+      "lang": "Python",
+      "status": "completed",
+      "icon": "fa-solid fa-shield-halved",
+      "stack": [
+        "Python",
+        "SQLite",
+        "Alembic",
+        "Pillow",
+        "WeasyPrint",
+        "JWT",
+        "Argon2id"
+      ],
+      "highlights": [
+        "CVSS v3.1 base scoring plus a CWSS-inspired Composite Risk Score (0–100), with optional NVD CVE enrichment",
+        "Per-project sharing, hardened evidence uploads and rotating refresh tokens with reuse detection",
+        "Versioned HTML, Markdown and PDF report exports with sha256 checksums"
+      ],
+      "description": "A self-hosted penetration-testing report generator: track engagements and findings, score them with CVSS v3.1 and a CWSS-inspired risk score, and export professional HTML, Markdown and PDF reports — running on SQLite and the filesystem with no external services.",
+      "live_preview": "",
       "source_code": ""
     }
   ]
