@@ -1,0 +1,21 @@
+{
+  "category": "privacy",
+  "label": "Privacy-Focused",
+  "projects": [
+    {
+      "id": "shieldguard-extreme",
+      "title": "ShieldGuard Extreme",
+      "category": "privacy",
+      "tags": [
+        "Adblocker",
+        "Privacy",
+        "Tracker Prevention"
+      ],
+      "lang": "JavaScript",
+      "status": "completed",
+      "description": "A high-performance, zero-telemetry privacy engine that combines aggressive ad-blocking with intelligent tracker prevention inside a single lightweight, hardened framework.",
+      "source_code": "https://github.com/kavineksith/shieldguard-extreme",
+      "live_preview": ""
+    }
+  ]
+}

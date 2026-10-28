@@ -1,0 +1,92 @@
+{
+  "category": "real-world",
+  "label": "Real-world Projects",
+  "projects": [
+    {
+      "id": "lucky-bookshop-pos",
+      "title": "Lucky Bookshop POS System",
+      "category": "real-world",
+      "tags": [
+        "POS",
+        "Inventory",
+        "Retail"
+      ],
+      "lang": "TypeScript",
+      "status": "ongoing",
+      "description": "A comprehensive web-based POS system for retail businesses, featuring inventory management, sales tracking, and customer insights.",
+      "live_preview": "",
+      "source_code": ""
+    },
+    {
+      "id": "lucky-bookshop",
+      "title": "LUCKY Book Shop & Communication",
+      "category": "real-world",
+      "tags": [
+        "Business Site",
+        "Stationery"
+      ],
+      "lang": "TypeScript",
+      "status": "completed",
+      "description": "Top-rated book store offering premium stationery, printing, and communication services.",
+      "live_preview": "https://lucky-bookshop.netlify.app/",
+      "source_code": ""
+    },
+    {
+      "id": "navodaa",
+      "title": "Navodaa - Unified Elegance",
+      "category": "real-world",
+      "tags": [
+        "Beauty",
+        "Fashion",
+        "Lifestyle"
+      ],
+      "lang": "TypeScript",
+      "status": "completed",
+      "description": "Beauty, Fashion & Lifestyle brand portfolio including Saloon Navodaa and more.",
+      "live_preview": "https://navodaa.netlify.app/",
+      "source_code": ""
+    },
+    {
+      "id": "soundup-music-box",
+      "title": "Soundup Music Box",
+      "category": "real-world",
+      "tags": [
+        "Audio Equipment",
+        "E-commerce"
+      ],
+      "lang": "TypeScript",
+      "status": "completed",
+      "description": "Premium destination for high-fidelity speakers and professional audio equipment.",
+      "live_preview": "https://soundupmusicbox.netlify.app/",
+      "source_code": ""
+    },
+    {
+      "id": "salon-navodaa",
+      "title": "Salon Navodaa",
+      "category": "real-world",
+      "tags": [
+        "Salon",
+        "Wellness"
+      ],
+      "lang": "HTML/CSS/JS",
+      "status": "completed",
+      "description": "Professional herbal beauty & wellness salon for women in Gampaha.",
+      "live_preview": "https://salonnavodaa.netlify.app/",
+      "source_code": ""
+    },
+    {
+      "id": "dream-art-creations",
+      "title": "Dream Art Creations",
+      "category": "real-world",
+      "tags": [
+        "Graphic Design",
+        "Branding"
+      ],
+      "lang": "HTML/CSS/JS",
+      "status": "completed",
+      "description": "Professional graphic design services including photo editing and branding.",
+      "live_preview": "https://dreamartcreation.netlify.app/",
+      "source_code": ""
+    }
+  ]
+}

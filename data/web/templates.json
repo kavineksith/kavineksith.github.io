@@ -1,0 +1,48 @@
+{
+  "category": "templates",
+  "label": "Personal Templates",
+  "projects": [
+    {
+      "id": "project-report-template",
+      "title": "Project Report Template",
+      "category": "templates",
+      "tags": [
+        "Template",
+        "Documentation"
+      ],
+      "lang": "HTML/CSS",
+      "status": "completed",
+      "description": "A professional template for software engineering project reports.",
+      "live_preview": "https://kavineksith.github.io/Software-Project-Report-Template/",
+      "source_code": "https://github.com/kavineksith/Software-Project-Report-Template"
+    },
+    {
+      "id": "portfolio-template-v2",
+      "title": "Portfolio Template V2",
+      "category": "templates",
+      "tags": [
+        "Portfolio",
+        "Template"
+      ],
+      "lang": "HTML/CSS",
+      "status": "completed",
+      "description": "The second version of my free personal portfolio website template.",
+      "live_preview": "https://kavineksith.github.io/Free-Personal-Portfolio-Website-Template-V2/",
+      "source_code": "https://github.com/kavineksith/Free-Personal-Portfolio-Website-Template-V2"
+    },
+    {
+      "id": "personal-portfolio-template",
+      "title": "Personal Portfolio Template",
+      "category": "templates",
+      "tags": [
+        "Portfolio",
+        "Template"
+      ],
+      "lang": "HTML/CSS",
+      "status": "completed",
+      "description": "A clean and modern website template for personal portfolios.",
+      "live_preview": "https://kavineksith.github.io/Free-Personal-Portfolio-Website-Template/",
+      "source_code": "https://github.com/kavineksith/Free-Personal-Portfolio-Website-Template"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "category": "it-support",
+  "label": "IT Support & Utilities",
+  "projects": [
+    {
+      "id": "file-organizer-pro",
+      "title": "File Organizer Pro",
+      "category": "it-support",
+      "tags": [
+        "Automation",
+        "File Management",
+        "Async"
+      ],
+      "lang": "Python",
+      "status": "completed",
+      "description": "An async, parallel, memory-efficient CLI tool that sorts files into category folders with checksum-based duplicate detection, dry-run simulation, structured logging, and end-of-run reports.",
+      "source_code": "https://github.com/kavineksith/File-Organizer-Pro",
+      "live_preview": ""
+    }
+  ]
+}

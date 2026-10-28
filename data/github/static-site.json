@@ -1,0 +1,20 @@
+{
+  "category": "static-site",
+  "label": "Static Sites",
+  "projects": [
+    {
+      "id": "kavineksith-github-io",
+      "title": "kavineksith.github.io",
+      "category": "static-site",
+      "tags": [
+        "Portfolio",
+        "GitHub Pages"
+      ],
+      "lang": "HTML/CSS",
+      "status": "completed",
+      "description": "Source repository for this personal portfolio website, hosted on GitHub Pages.",
+      "source_code": "https://github.com/kavineksith/kavineksith.github.io",
+      "live_preview": "https://kavineksith.github.io/"
+    }
+  ]
+}
