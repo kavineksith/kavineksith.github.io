@@ -1,0 +1,53 @@
+{
+  "category": "tutorials",
+  "label": "Tutorials & Learning Resources",
+  "projects": [
+    {
+      "id": "rust-tutorial-beginner-to-intermediate",
+      "title": "Rust Tutorial — Beginner to Intermediate Level",
+      "category": "tutorials",
+      "tags": [
+        "Rust",
+        "Tutorial",
+        "Course"
+      ],
+      "lang": "Rust",
+      "status": "completed",
+      "description": "A complete, self-paced Rust course of 51 chapters taking learners from \"Hello World\" through ownership, borrowing, lifetimes, traits, generics, closures, iterators, macros, async/await, FFI and idiomatic Rust patterns, organized into 10 progressive thematic modules.",
+      "source_code": "https://github.com/kavineksith/Rust-Tutorial-Beginner-to-Intermediate-Level",
+      "live_preview": ""
+    },
+    {
+      "id": "mysql-tutorial-beginner-to-advanced",
+      "title": "MySQL Tutorial — Beginner to Advanced Level",
+      "category": "tutorials",
+      "tags": [
+        "MySQL",
+        "SQL",
+        "Tutorial",
+        "Database"
+      ],
+      "lang": "SQL",
+      "status": "completed",
+      "description": "A textbook-depth SQL course using a single runnable e-commerce database (ecom), covering core SQL through advanced MySQL features (window functions, recursive CTEs, JSON, triggers, transactions, performance, security) with 80 graded exercises and full solutions.",
+      "source_code": "https://github.com/kavineksith/MySQL-Tutorial-Beginner-to-Advanced-Level",
+      "live_preview": ""
+    },
+    {
+      "id": "tkinter-gui-design-guide",
+      "title": "Tkinter GUI Design Guide for Python Applications",
+      "category": "tutorials",
+      "tags": [
+        "Python",
+        "Tkinter",
+        "GUI",
+        "Guide"
+      ],
+      "lang": "Python",
+      "status": "completed",
+      "description": "A complete, practical guide to designing professional desktop GUIs with Python's built-in tkinter library and the themed ttk widget set, covering nine progressive sections with 20 runnable example files, drop-in scaffolds and reference docs.",
+      "source_code": "https://github.com/kavineksith/Tkinter-GUI-Design-Guide-for-Python-Applications",
+      "live_preview": ""
+    }
+  ]
+}

@@ -66,7 +66,7 @@
       ],
       "description": "A multi-client point-of-sale system where the web and desktop apps talk to a single Spring Boot REST API that alone owns the MySQL database, with Flyway migrations, dev/test/prod profiles and a Docker-ready backend.",
       "live_preview": "",
-      "source_code": ""
+      "source_code": "https://github.com/kavineksith/INSOPHINIA-POS-v7-Java-MySQL-Multi-Platform-Edition"
     },
     {
       "id": "insophinia-pos-php",
@@ -98,7 +98,7 @@
       ],
       "description": "A pure PHP and MySQL point-of-sale system covering billing, inventory, customers, warranties, repairs and marketing campaigns, with a security model matching the original Next.js edition and simple deployment via Docker, Podman, Apache or Nginx.",
       "live_preview": "",
-      "source_code": ""
+      "source_code": "https://github.com/kavineksith/INSOPHINIA-POS-v7-PHP-MySQL-Edition"
     }
   ]
 }

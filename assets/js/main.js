@@ -60,9 +60,11 @@ $(function () {
     privacy: 'fa-solid fa-user-shield',
     'task-management': 'fa-solid fa-list-check',
     'it-support': 'fa-solid fa-toolbox',
+    'developer-tools': 'fa-solid fa-code',
     'java-spring': 'fa-solid fa-leaf',
     'testing-qa': 'fa-solid fa-vial',
     'static-site': 'fa-solid fa-file-code',
+    tutorials: 'fa-solid fa-graduation-cap',
     misc: 'fa-solid fa-code-branch',
     portfolio: 'fa-solid fa-star'
   };

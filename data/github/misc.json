@@ -55,6 +55,22 @@
       "description": "A repository link only — no README documentation is currently published for this project. See the documented Server Hardening Toolkit in CLI & Sysadmin Tools for the earlier version.",
       "source_code": "https://github.com/kavineksith/Server-Hardening-Toolkit-V3",
       "live_preview": ""
+    },
+    {
+      "id": "insophinia-forage",
+      "title": "InsophiniaForage",
+      "category": "misc",
+      "tags": [
+        "Tauri",
+        "Desktop App",
+        "PHP",
+        "WordPress Dev"
+      ],
+      "lang": "Rust",
+      "status": "completed",
+      "description": "An experimental, cross-platform desktop development stack (\"XAMPP, but modern\") bundling nginx + PHP-FPM + MariaDB + phpMyAdmin + Composer + WordPress, managed from a Mac-style GUI built with Tauri 2 (Rust) + SvelteKit, with per-project PHP version pinning and real-time log streaming.",
+      "source_code": "https://github.com/kavineksith/InsophiniaForage",
+      "live_preview": ""
     }
   ]
 }

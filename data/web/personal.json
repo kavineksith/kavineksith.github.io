@@ -1,5 +1,66 @@
 {
   "category": "personal",
   "label": "Personal Projects",
-  "projects": []
+  "projects": [
+    {
+      "id": "numera-calculator-platform",
+      "title": "Numera Calculator Platform",
+      "category": "personal",
+      "tags": [
+        "Calculator",
+        "Next.js",
+        "Math Engine"
+      ],
+      "lang": "TypeScript",
+      "status": "completed",
+      "description": "A production-grade multi-mode (Standard, Scientific, Advanced) calculator built on Next.js 16 with a pure-TypeScript math engine using Decimal.js for arbitrary-precision arithmetic and a Prisma + SQLite backend for history and recovery.",
+      "source_code": "https://github.com/kavineksith/numera-calculator-platform",
+      "live_preview": ""
+    },
+    {
+      "id": "glassmorphic-digital-clock",
+      "title": "Glassmorphic Digital Clock",
+      "category": "personal",
+      "tags": [
+        "Web Component",
+        "Glassmorphism",
+        "Clock"
+      ],
+      "lang": "JavaScript",
+      "status": "completed",
+      "description": "A reusable, config-driven custom element (<digital-clock>) with glassmorphism styling, animated gradient borders, image/slideshow/neon backgrounds and full IANA timezone and locale support, usable with zero build step.",
+      "source_code": "https://github.com/kavineksith/glassmorphic-digital-clock",
+      "live_preview": ""
+    },
+    {
+      "id": "motefield",
+      "title": "Motefield",
+      "category": "personal",
+      "tags": [
+        "Particles",
+        "Canvas",
+        "Zero-Dependency"
+      ],
+      "lang": "JavaScript",
+      "status": "completed",
+      "description": "A tiny, dependency-free 2D-canvas particle field library with first-class support for custom icons and symbols (emoji, text, images, inline SVG and custom draw functions), plus five built-in presets and pointer interaction modes.",
+      "source_code": "https://github.com/kavineksith/motefield",
+      "live_preview": "https://kavineksith.github.io/motefield/index.html"
+    },
+    {
+      "id": "snow-effect-js",
+      "title": "snow-effect-js",
+      "category": "personal",
+      "tags": [
+        "Snow Effect",
+        "Canvas",
+        "Zero-Dependency"
+      ],
+      "lang": "JavaScript",
+      "status": "completed",
+      "description": "A lightweight, zero-dependency canvas snow effect with low CPU/RAM/GPU use, supporting custom symbols, emoji, images and shapes falling in any direction. Also powers the festive snowfall on this portfolio.",
+      "source_code": "https://github.com/kavineksith/snow-effect-js",
+      "live_preview": "https://kavineksith.github.io/snow-effect-js/index.html"
+    }
+  ]
 }

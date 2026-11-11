@@ -19,10 +19,16 @@
       "count": 2
     },
     {
+      "id": "tutorials",
+      "label": "Tutorials & Learning Resources",
+      "file": "tutorials.json",
+      "count": 3
+    },
+    {
       "id": "misc",
       "label": "Miscellaneous",
       "file": "misc.json",
-      "count": 4
+      "count": 5
     }
   ]
 }

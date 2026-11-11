@@ -347,5 +347,55 @@
     <script src="../assets/js/project-core.js"></script>
     <script src="../assets/js/project-catalog.js"></script>
     <script src="../assets/js/footer.js" defer></script>
+
+    <!-- snow-effect-js: lightweight canvas snowfall (https://github.com/kavineksith/snow-effect-js)
+         December 1 to December 31 only (default behaviour; enableSnow omitted). -->
+    <script src="../assets/js/snow-effect.js"></script>
+    <script>
+      // December-only snowfall. enableSnow is intentionally unset so the
+      // library falls back to its built-in "December only" rule.
+      if (window.SnowEffect) {
+        new SnowEffect({
+          isDark: false,
+          particleCount: 60,
+          zIndex: 5,
+          size: [2, 6],
+          speed: 0.8,
+          maxFps: 30
+        }).init();
+      }
+    </script>
+
+    <!-- motefield: tiny year-round particle field with developer-themed glyphs
+         (https://github.com/kavineksith/motefield) -->
+    <script src="../assets/js/motefield.js"></script>
+    <script>
+      // Subtle, battery-friendly decorative particle field. Code-flavoured glyphs
+      // and sparkles drift slowly behind the main content (z-index 5 sits between
+      // the background gradient at z-0 and the content at z-10).
+      if (window.Motefield && Motefield.create) {
+        Motefield.create({
+          shapes: [
+            '</>',     // code bracket - developer identity
+            '{ }',     // curly braces - code blocks
+            '★',       // star - quality / craft
+            '✦',       // sparkle - creativity
+            '◆',       // diamond - precision
+            '#'        // hash - systems / config
+          ],
+          colors: ['#60A5FA', '#3B82F6', '#93C5FD', '#BFDBFE'],
+          count: 32,
+          size: [11, 19],
+          opacity: [0.18, 0.45],
+          motion: { mode: 'drift', speed: [4, 12], spread: 30 },
+          fps: 30,
+          maxPixelRatio: 1,
+          zIndex: 5,
+          layer: 'front',
+          pauseWhenHidden: true,
+          respectReducedMotion: true
+        });
+      }
+    </script>
   </body>
 </html>

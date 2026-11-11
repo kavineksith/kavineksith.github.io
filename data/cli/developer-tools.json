@@ -1,0 +1,22 @@
+{
+  "category": "developer-tools",
+  "label": "Developer Tools",
+  "projects": [
+    {
+      "id": "git-version-control-utilities-dsl",
+      "title": "Git Version Control Utilities with DSL Scripting",
+      "category": "developer-tools",
+      "tags": [
+        "Git",
+        "Version Control",
+        "DevTools",
+        "Multi-Platform"
+      ],
+      "lang": "Python",
+      "status": "completed",
+      "description": "A collection of Git helper utilities provided in three parallel implementations (Bash, PowerShell and Python) that share the same safe-by-default operating principles, with dry-run mode, meaningful exit codes, bulk batch operations and full test coverage.",
+      "source_code": "https://github.com/kavineksith/Git-Version-Control-Utilities-with-DSL-Scripting",
+      "live_preview": ""
+    }
+  ]
+}

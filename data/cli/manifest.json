@@ -28,7 +28,13 @@
       "id": "it-support",
       "label": "IT Support & Utilities",
       "file": "it-support.json",
-      "count": 4
+      "count": 1
+    },
+    {
+      "id": "developer-tools",
+      "label": "Developer Tools",
+      "file": "developer-tools.json",
+      "count": 1
     }
   ]
 }
